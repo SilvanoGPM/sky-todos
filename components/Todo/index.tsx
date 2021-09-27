@@ -49,15 +49,38 @@ export function Todo() {
     }
   }
 
+  function removeTodo(id: string) {
+    return () => {
+      const newTodos = todos.filter((todo) => todo.id !== id);
+      setTodos(newTodos);
+    };
+  }
+
+  function switchTodo(id: string) {
+    return () => {
+      const newTodos = todos.map((todo) =>
+        todo.id === id ? { ...todo, finished: !todo.finished } : todo
+      );
+
+      setTodos(newTodos);
+    };
+  }
+
   function renderItem({ item }: TodoRenderItem) {
+    const { id, title, finished } = item;
+
     return (
       <View>
-        <Text>{item.title}</Text>
-        <TouchableOpacity>
+        <Text style={{ color: finished ? "red" : "black" }}>{title}</Text>
+        <TouchableOpacity onPress={removeTodo(id)}>
           <Icon name="trash-o" size={30} />
         </TouchableOpacity>
-        <TouchableOpacity>
-          <Icon name="check-square" size={30} />
+        <TouchableOpacity onPress={switchTodo(id)}>
+          {finished ? (
+            <Icon name="remove" size={30} />
+          ) : (
+            <Icon name="check" size={30} />
+          )}
         </TouchableOpacity>
       </View>
     );
@@ -68,7 +91,7 @@ export function Todo() {
       <View>
         <TextInput value={todoTitle} onChangeText={setTodoTitle} />
         <TouchableOpacity onPress={insertTodo}>
-          <Icon name="plus-square" size={30} />
+          <Icon name="plus" size={30} />
         </TouchableOpacity>
       </View>
 
