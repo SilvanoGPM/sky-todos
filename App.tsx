@@ -1,7 +1,12 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { RootSiblingParent } from 'react-native-root-siblings'
+
 import { Todo } from './components/Todo';
 
 export default function App() {
-  return <Todo />;
+  return (
+    <RootSiblingParent>
+      <Todo />
+    </RootSiblingParent>
+  );
 }
