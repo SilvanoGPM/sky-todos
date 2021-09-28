@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Alert,
   FlatList,
+  Modal,
   SafeAreaView,
   Text,
   TextInput,
   TouchableOpacity,
   View,
 } from "react-native";
-import Toast from 'react-native-root-toast';
+import Toast from "react-native-root-toast";
 import Icon from "react-native-vector-icons/FontAwesome";
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
@@ -35,38 +36,62 @@ const todos1 = [
 ];
 
 export function Todo() {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [selectedTodo, setSelectedTodo] = useState<TodoType>({} as TodoType);
+  const [todoToUpdate, setTodoToUpdate] = useState<string>("");
   const [todoTitle, setTodoTitle] = useState<string>("");
   const [todos, setTodos] = useState<TodoType[]>(todos1);
 
-  function insertTodo() {
+  useEffect(() => console.log(selectedTodo), []);
+
+  function handleSelectedTodo(todo: TodoType) {
+    return () => {
+      setSelectedTodo(todo);
+      setTodoToUpdate(todo.title);
+      setShowModal(true);
+    };
+  }
+
+  function validateTodoTitle(todoTitle: string) {
     const clearedTodoTitle = todoTitle.trim();
 
     if (clearedTodoTitle.length > MAX_CHARS_TODO) {
-      Toast.show(`O máximo de caracteres para um a fazer é ${MAX_CHARS_TODO}.`, {
-        duration: Toast.durations.SHORT
-      });
+      Toast.show(
+        `O máximo de caracteres para um a fazer é ${MAX_CHARS_TODO}.`,
+        {
+          duration: Toast.durations.SHORT,
+        }
+      );
 
-      return;
+      return null;
     }
 
     const isTodoTitleValid = clearedTodoTitle && clearedTodoTitle.length >= 3;
 
-    if (isTodoTitleValid) {
+    if (!isTodoTitleValid) {
+      Toast.show("A fazer precisa ter pelo menos 3 caracteres...", {
+        duration: Toast.durations.SHORT,
+      });
+
+      return null;
+    }
+
+    return clearedTodoTitle;
+  }
+
+  function insertTodo() {
+    const validTodo = validateTodoTitle(todoTitle);
+
+    if (validTodo) {
       const newTodo = {
         id: uuid(),
-        title: clearedTodoTitle,
+        title: validTodo,
         finished: false,
       };
 
       setTodos([newTodo, ...todos]);
       setTodoTitle("");
-      return;
     }
-
-    Toast.show('A fazer precisa ter pelo menos 3 caracteres...', {
-      duration: Toast.durations.SHORT
-    });
-
   }
 
   function removeTodo(id: string) {
@@ -93,6 +118,23 @@ export function Todo() {
     };
   }
 
+  function closeModal() {
+    setShowModal(false);
+  }
+
+  function updateTodo() {
+    const validTodo = validateTodoTitle(todoToUpdate);
+
+    if (validTodo) {
+      const newTodos = todos.map((todo) =>
+        todo.id === selectedTodo.id ? { ...todo, title: validTodo } : todo
+      );
+
+      setTodos(newTodos);
+      closeModal();
+    }
+  }
+
   function renderItem({ item }: TodoRenderItem) {
     const { id, title, finished } = item;
 
@@ -107,42 +149,44 @@ export function Todo() {
     ];
 
     return (
-      <View style={itemStyles}>
-        <Text
-          style={[
-            styles.list__text,
-            finished
-              ? {
-                  color: colorThemes.light.todoFinished,
-                  textDecorationLine: "line-through",
-                }
-              : {},
-          ]}
-        >
-          {title}
-        </Text>
+      <TouchableOpacity onPress={handleSelectedTodo(item)}>
+        <View style={itemStyles}>
+          <Text
+            style={[
+              styles.list__text,
+              finished
+                ? {
+                    color: colorThemes.light.todoFinished,
+                    textDecorationLine: "line-through",
+                  }
+                : {},
+            ]}
+          >
+            {title}
+          </Text>
 
-        <View style={styles.list__actions}>
-          <TouchableOpacity onPress={removeTodo(id)}>
-            <Icon
-              name="trash-o"
-              size={30}
-              color={colorThemes.light.todoRemove}
-            />
-          </TouchableOpacity>
-          <TouchableOpacity onPress={switchTodo(id)}>
-            <Icon
-              name={finished ? "remove" : "check"}
-              size={30}
-              color={
-                finished
-                  ? colorThemes.light.todoSwitch.on
-                  : colorThemes.light.todoSwitch.off
-              }
-            />
-          </TouchableOpacity>
+          <View style={styles.list__actions}>
+            <TouchableOpacity onPress={removeTodo(id)}>
+              <Icon
+                name="trash-o"
+                size={30}
+                color={colorThemes.light.todoRemove}
+              />
+            </TouchableOpacity>
+            <TouchableOpacity onPress={switchTodo(id)}>
+              <Icon
+                name={finished ? "remove" : "check"}
+                size={30}
+                color={
+                  finished
+                    ? colorThemes.light.todoSwitch.on
+                    : colorThemes.light.todoSwitch.off
+                }
+              />
+            </TouchableOpacity>
+          </View>
         </View>
-      </View>
+      </TouchableOpacity>
     );
   }
 
@@ -161,6 +205,44 @@ export function Todo() {
           <Icon name="plus" size={30} color="#ffffff" />
         </TouchableOpacity>
       </View>
+
+      <Modal
+        transparent
+        animationType="slide"
+        visible={showModal}
+      >
+        <View style={styles.modal}>
+          <TouchableOpacity onPress={closeModal} style={styles.modal__close}>
+            <Icon name="close" size={30} color={colorThemes.light.modalClose} />
+          </TouchableOpacity>
+
+          <Text style={styles.modal__id}>Id: {selectedTodo.id}</Text>
+
+          <View style={styles.modal__title__container}>
+            <Text style={styles.modal__title}>Título:</Text>
+            <TextInput
+              style={styles.modal__title__input}
+              value={todoToUpdate}
+              onChangeText={setTodoToUpdate}
+            />
+            <Text style={styles.modal__title__msg}>
+              Caso você altere o valor do título, e clique em salvar, o valor
+              será atualizado.
+            </Text>
+          </View>
+
+          <Text style={styles.modal__finished}>
+            A fazer {selectedTodo.finished ? "" : "não "}foi finalizado!
+          </Text>
+
+          <View style={styles.modal__save__container}>
+            <TouchableOpacity style={styles.modal__save} onPress={updateTodo}>
+              <Text style={styles.modal__save__text}>Salvar</Text>
+              <Icon name="save" size={20} color={colorThemes.light.neutral} />
+            </TouchableOpacity>
+          </View>
+        </View>
+      </Modal>
 
       <View style={styles.todos}>
         {todos.length === 0 && (
