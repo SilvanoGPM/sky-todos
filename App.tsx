@@ -14,7 +14,6 @@ export default function App() {
 // TODO: Fechar modal ao clicar em voltar no celular.
 // TODO: Fechar modal ao clicar fora do modal.
 // TODO: Adicionar header.
-// TODO: Salvar TODOs.
 // TODO: Adicionar temas.
 // TODO: Arrumar mensagens.
 // TODO: Separar em sub componentes os componente de TODO.

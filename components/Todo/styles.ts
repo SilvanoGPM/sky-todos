@@ -12,7 +12,8 @@ export const colorThemes = {
       off: '#00b894',
     },
     todoFinished: '#b2bec3',
-    todosEmpty: '#2d3436',
+    todosEmpty: '#b2bec3',
+    todosLoading: '#b2bec3',
     modalClose: '#d63031',
     modalSave: '#16a085',
     modalTitleMsg: '#d63031',
@@ -55,6 +56,12 @@ export default StyleSheet.create({
   todos__empty: {
     fontSize: 30,
     color: colorThemes.light.todosEmpty,
+    textAlign: 'center',
+  },
+
+  todos__loading: {
+    fontSize: 30,
+    color: colorThemes.light.todosLoading,
     textAlign: 'center',
   },
 

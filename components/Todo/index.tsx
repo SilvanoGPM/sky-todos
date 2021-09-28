@@ -14,6 +14,8 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import "react-native-get-random-values";
 import { v4 as uuid } from "uuid";
 
+import Repository from "../../lib/Repository";
+
 import styles, { colorThemes } from "./styles";
 
 type TodoType = {
@@ -28,21 +30,41 @@ type TodoRenderItem = {
 };
 
 const MAX_CHARS_TODO = 200;
+const TODOS_KEY = "@SkyG0D::todos";
 
-const todos1 = [
-  { id: "1", title: "Arrumar casa", finished: false },
-  { id: "2", title: "Comprar carne", finished: true },
-  { id: "3", title: "Fazer atividades de físicaaaaa", finished: false },
-];
+const repository = new Repository();
 
 export function Todo() {
   const [showModal, setShowModal] = useState<boolean>(false);
+  const [loading, setLoading] = useState<boolean>(true);
   const [selectedTodo, setSelectedTodo] = useState<TodoType>({} as TodoType);
   const [todoToUpdate, setTodoToUpdate] = useState<string>("");
   const [todoTitle, setTodoTitle] = useState<string>("");
-  const [todos, setTodos] = useState<TodoType[]>(todos1);
+  const [todos, setTodos] = useState<TodoType[]>([]);
 
-  useEffect(() => console.log(selectedTodo), []);
+  useEffect(() => {
+    async function persitsTodos() {
+      if (!loading) {
+        await repository.save(TODOS_KEY, todos);
+      }
+    }
+
+    persitsTodos();
+  }, [todos]);
+
+  useEffect(() => {
+    async function loadTodos() {
+      const todos = await repository.get(TODOS_KEY);
+
+      if (todos) {
+        setTodos(todos);
+      }
+
+      setLoading(false);
+    }
+
+    loadTodos();
+  }, []);
 
   function handleSelectedTodo(todo: TodoType) {
     return () => {
@@ -56,12 +78,11 @@ export function Todo() {
     const clearedTodoTitle = todoTitle.trim();
 
     if (clearedTodoTitle.length > MAX_CHARS_TODO) {
-      Toast.show(
-        `O máximo de caracteres para um a fazer é ${MAX_CHARS_TODO}.`,
-        {
-          duration: Toast.durations.SHORT,
-        }
-      );
+      const message = `O máximo de caracteres para um a fazer é ${MAX_CHARS_TODO}.`;
+
+      Toast.show(message, {
+        duration: Toast.durations.SHORT,
+      });
 
       return null;
     }
@@ -132,6 +153,11 @@ export function Todo() {
 
       setTodos(newTodos);
       closeModal();
+
+      Toast.show("A fazer foi atualizado!", {
+        duration: Toast.durations.SHORT,
+        position: Toast.positions.CENTER,
+      });
     }
   }
 
@@ -206,11 +232,7 @@ export function Todo() {
         </TouchableOpacity>
       </View>
 
-      <Modal
-        transparent
-        animationType="slide"
-        visible={showModal}
-      >
+      <Modal transparent animationType="slide" visible={showModal}>
         <View style={styles.modal}>
           <TouchableOpacity onPress={closeModal} style={styles.modal__close}>
             <Icon name="close" size={30} color={colorThemes.light.modalClose} />
@@ -245,8 +267,10 @@ export function Todo() {
       </Modal>
 
       <View style={styles.todos}>
-        {todos.length === 0 && (
-          <Text style={styles.todos__empty}>Você não possui a fazeres...</Text>
+        {loading && <Text style={styles.todos__loading}>Carregando...</Text>}
+
+        {!loading && todos.length === 0 && (
+          <Text style={styles.todos__empty}>Lista está vazia...</Text>
         )}
 
         <FlatList
