@@ -1,7 +1,7 @@
 import React from 'react';
 import { RootSiblingParent } from 'react-native-root-siblings'
 
-import { Todo } from './components/Todo';
+import { Todo } from './screens/Todo';
 
 export default function App() {
   return (
@@ -17,3 +17,4 @@ export default function App() {
 // TODO: Adicionar temas.
 // TODO: Arrumar mensagens.
 // TODO: Separar em sub componentes os componente de TODO.
+// TODO: Filtro de fazeres.
