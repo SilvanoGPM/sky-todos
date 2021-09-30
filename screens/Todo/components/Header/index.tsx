@@ -1,12 +1,19 @@
-import React from "react";
+import React, { FC } from "react";
 import { Text, View } from "react-native";
+import { ThemesEnum } from "../../../../context/ThemeContext";
 
-import styles from "./styles";
+import { getStyles } from "./styles";
 
-export function Header() {
+type HeaderProps = {
+  theme: ThemesEnum;
+};
+
+export const Header: FC<HeaderProps> = ({ theme }) => {
+  const styles = getStyles(theme);
+
   return (
     <View style={styles.header}>
       <Text style={styles.text}>TODOs List</Text>
     </View>
   );
-}
+};

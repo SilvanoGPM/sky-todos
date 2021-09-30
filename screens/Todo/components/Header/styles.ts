@@ -1,17 +1,26 @@
 import { StyleSheet } from "react-native";
+
+import { ThemesEnum } from "../../../../context/ThemeContext";
+
 import { colorThemes } from "../../colorThemes";
 
-export default StyleSheet.create({
-  header: {
-    padding: 20,
-    alignItems: "center",
-  },
+export function getStyles(theme: ThemesEnum) {
+  const colorTheme = colorThemes[theme];
 
-  text: {
-    fontSize: 40,
-    color: colorThemes.light.headerText,
-    borderBottomWidth: 1,
-    borderBottomColor: colorThemes.light.headerText,
-    paddingHorizontal: 20,
-  },
-});
+  return StyleSheet.create({
+    header: {
+      padding: 20,
+      alignItems: "center",
+    },
+
+    text: {
+      fontSize: 40,
+      color: colorTheme.header.textColor,
+      borderBottomWidth: 1,
+      borderBottomColor: colorTheme.header.textColor,
+      paddingHorizontal: 20,
+    },
+  });
+}
+
+export default getStyles("light");

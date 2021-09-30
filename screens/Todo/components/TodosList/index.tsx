@@ -3,7 +3,9 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { View, Text, FlatList, TouchableOpacity, Alert } from "react-native";
 
 import { colorThemes } from "../../colorThemes";
-import styles from "./styles";
+import { getStyles } from "./styles";
+import { ThemesEnum } from "../../../../context/ThemeContext";
+import Toast from "react-native-root-toast";
 
 type TodoType = {
   id: string;
@@ -19,6 +21,7 @@ type TodoRenderItem = {
 type TodosListProps = {
   todos: TodoType[];
   loading: boolean;
+  theme: ThemesEnum;
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
   handleSelectedTodo: (todo: TodoType) => () => void;
 };
@@ -27,12 +30,21 @@ export const TodosList: FC<TodosListProps> = ({
   todos,
   loading,
   setTodos,
+  theme,
   handleSelectedTodo,
 }) => {
+  const styles = getStyles(theme);
+  const colorTheme = colorThemes[theme];
+
+
   function removeTodo(id: string) {
     function exec() {
       const newTodos = todos.filter((todo) => todo.id !== id);
       setTodos(newTodos);
+
+      Toast.show('Todo removido!', {
+        duration: Toast.durations.SHORT,
+      })
     }
 
     return () => {
@@ -60,7 +72,7 @@ export const TodosList: FC<TodosListProps> = ({
       styles.list__item,
       finished
         ? {
-            borderBottomColor: colorThemes.light.todoFinished,
+            borderBottomColor: colorTheme.todo.finishedColor,
             opacity: 0.5,
           }
         : {},
@@ -74,7 +86,7 @@ export const TodosList: FC<TodosListProps> = ({
               styles.list__text,
               finished
                 ? {
-                    color: colorThemes.light.todoFinished,
+                    color: colorTheme.todo.finishedColor,
                     textDecorationLine: "line-through",
                   }
                 : {},
@@ -88,7 +100,7 @@ export const TodosList: FC<TodosListProps> = ({
               <Icon
                 name="trash-o"
                 size={30}
-                color={colorThemes.light.todoRemove}
+                color={colorTheme.todo.removeColor}
               />
             </TouchableOpacity>
             <TouchableOpacity onPress={switchTodo(id)}>
@@ -97,8 +109,8 @@ export const TodosList: FC<TodosListProps> = ({
                 size={30}
                 color={
                   finished
-                    ? colorThemes.light.todoSwitch.on
-                    : colorThemes.light.todoSwitch.off
+                    ? colorTheme.todo.switchColor.on
+                    : colorTheme.todo.switchColor.off
                 }
               />
             </TouchableOpacity>

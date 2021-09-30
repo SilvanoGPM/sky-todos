@@ -8,14 +8,14 @@ import {
   TouchableOpacity,
   Text,
   TextInput,
-  TouchableWithoutFeedbackBase,
   TouchableWithoutFeedback,
 } from "react-native";
 
 import { validateTodoTitle } from "../../../../utils/validateTodoTitle";
 
 import { colorThemes } from "../../colorThemes";
-import styles from "./styles";
+import { getStyles } from "./styles";
+import { ThemesEnum } from "../../../../context/ThemeContext";
 
 type TodoType = {
   id: string;
@@ -26,6 +26,7 @@ type TodoType = {
 type UpdateTodoProps = {
   selectedTodo: TodoType;
   todos: TodoType[];
+  theme: ThemesEnum;
   setSelectedTodo: (todo: TodoType) => void;
   setTodos: (todos: TodoType[]) => void;
 };
@@ -33,11 +34,15 @@ type UpdateTodoProps = {
 export const UpdateTodo: FC<UpdateTodoProps> = ({
   selectedTodo,
   todos,
+  theme,
   setSelectedTodo,
   setTodos,
 }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [todoToUpdate, setTodoToUpdate] = useState<string>("");
+
+  const styles = getStyles(theme);
+  const colorTheme = colorThemes[theme];
 
   useEffect(() => {
     if (selectedTodo.id) {
@@ -82,7 +87,7 @@ export const UpdateTodo: FC<UpdateTodoProps> = ({
 
       <View style={styles.modal}>
         <TouchableOpacity onPress={closeModal} style={styles.modal__close}>
-          <Icon name="close" size={30} color={colorThemes.light.modalClose} />
+          <Icon name="close" size={30} color={colorTheme.modal.closeColor} />
         </TouchableOpacity>
 
         <Text style={styles.modal__id}>Id: {selectedTodo.id}</Text>
@@ -94,7 +99,7 @@ export const UpdateTodo: FC<UpdateTodoProps> = ({
             value={todoToUpdate}
             onChangeText={setTodoToUpdate}
           />
-          <Text style={styles.modal__title__msg}>
+          <Text style={styles.modal__title__warn}>
             Caso você altere o valor do título, e clique em salvar, o valor será
             atualizado.
           </Text>
@@ -107,7 +112,7 @@ export const UpdateTodo: FC<UpdateTodoProps> = ({
         <View style={styles.modal__save__container}>
           <TouchableOpacity style={styles.modal__save} onPress={updateTodo}>
             <Text style={styles.modal__save__text}>Salvar</Text>
-            <Icon name="save" size={20} color={colorThemes.light.neutral} />
+            <Icon name="save" size={20} color={colorTheme.modal.saveColor} />
           </TouchableOpacity>
         </View>
       </View>

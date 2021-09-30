@@ -1,21 +1,77 @@
 export const colorThemes = {
   light: {
-    neutral: '#ffffff',
-    neutralInverted: '#000000',
+    neutral: "#ffffff",
+    neutralInverted: "#000000",
+    backgroundColor: "#ffffff",
 
-    headerText: '#fdcb6e',
-    newTodo: '#16a085',
-    todoText: '#2d3436',
-    todoRemove: '#d63031',
-    todoSwitch: {
-      on: '#ff7675',
-      off: '#00b894',
+    header: {
+      textColor: "#fdcb6e",
     },
-    todoFinished: '#b2bec3',
-    todosEmpty: '#b2bec3',
-    todosLoading: '#b2bec3',
-    modalClose: '#d63031',
-    modalSave: '#16a085',
-    modalTitleMsg: '#d63031',
+
+    newTodo: {
+      inputColor: "#16a085",
+      iconBackground: "#16a085",
+      iconColor: "#ffffff",
+    },
+
+    todo: {
+      textColor: "#2d3436",
+      removeColor: "#d63031",
+      finishedColor: "#b2bec3",
+      emptyColor: "#b2bec3",
+      loadingColor: "#b2bec3",
+
+      switchColor: {
+        on: "#ff7675",
+        off: "#00b894",
+      },
+    },
+
+    modal: {
+      textColor: "#000000",
+      backgroundColor: "#ffffff",
+      closeColor: "#d63031",
+      saveBackgroundColor: "#16a085",
+      saveColor: "#ffffff",
+      warnColor: "#d63031",
+    },
+  },
+
+  dark: {
+    neutral: "#000000",
+    neutralInverted: "#ffffff",
+    backgroundColor: "#485460",
+
+    header: {
+      textColor: "#fdcb6e",
+    },
+
+    newTodo: {
+      inputColor: "#16a085",
+      iconBackground: "#16a085",
+      iconColor: "#ffffff",
+    },
+
+    todo: {
+      textColor: "#ffffff",
+      removeColor: "#d63031",
+      finishedColor: "#b2bec3",
+      emptyColor: "#b2bec3",
+      loadingColor: "#b2bec3",
+
+      switchColor: {
+        on: "#ff7675",
+        off: "#00b894",
+      },
+    },
+
+    modal: {
+      textColor: "#ffffff",
+      backgroundColor: "#808e9b",
+      closeColor: "#d63031",
+      saveBackgroundColor: "#16a085",
+      saveColor: "#ffffff",
+      warnColor: "#d63031",
+    },
   },
 };

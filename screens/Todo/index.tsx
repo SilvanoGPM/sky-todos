@@ -1,16 +1,17 @@
 import "react-native-get-random-values";
 
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native";
 
+import { Header } from "./components/Header";
 import { NewTodo } from "./components/NewTodo";
 import { UpdateTodo } from "./components/UpdateTodo";
 import { TodosList } from "./components/TodosList";
 
 import Repository from "../../lib/Repository";
 
-import styles from "./styles";
-import { Header } from "./components/Header";
+import { getStyles } from "./styles";
+import { ThemeContext } from "../../context/ThemeContext";
 
 type TodoType = {
   id: string;
@@ -23,9 +24,13 @@ const TODOS_KEY = "@SkyG0D::todos";
 const repository = new Repository();
 
 export function Todo() {
+  const { theme } = useContext(ThemeContext);
+
   const [loading, setLoading] = useState<boolean>(true);
   const [selectedTodo, setSelectedTodo] = useState<TodoType>({} as TodoType);
   const [todos, setTodos] = useState<TodoType[]>([]);
+
+  const styles = getStyles(theme);
 
   useEffect(() => {
     async function persitsTodos() {
@@ -59,12 +64,13 @@ export function Todo() {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Header />
+      <Header theme={theme} />
 
-      <NewTodo setTodos={setTodos} />
+      <NewTodo theme={theme} setTodos={setTodos} />
 
       <UpdateTodo
         selectedTodo={selectedTodo}
+        theme={theme}
         todos={todos}
         setSelectedTodo={setSelectedTodo}
         setTodos={setTodos}
@@ -73,6 +79,7 @@ export function Todo() {
       <TodosList
         todos={todos}
         loading={loading}
+        theme={theme}
         setTodos={setTodos}
         handleSelectedTodo={handleSelectedTodo}
       />

@@ -7,7 +7,8 @@ import { v4 as uuid } from "uuid";
 import { validateTodoTitle } from "../../../../utils/validateTodoTitle";
 
 import { colorThemes } from "../../colorThemes";
-import styles from "./styles";
+import { getStyles } from "./styles";
+import { ThemesEnum } from "../../../../context/ThemeContext";
 
 type TodoType = {
   id: string;
@@ -16,11 +17,15 @@ type TodoType = {
 };
 
 type NewTodoProps = {
+  theme: ThemesEnum;
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>
 };
 
-export const NewTodo: FC<NewTodoProps> = ({ setTodos }) => {
+export const NewTodo: FC<NewTodoProps> = ({ theme, setTodos }) => {
   const [todoTitle, setTodoTitle] = useState<string>("");
+
+  const styles = getStyles(theme);
+  const colorTheme = colorThemes[theme];
 
   function insertTodo() {
     const validTodo = validateTodoTitle(todoTitle);
@@ -45,13 +50,13 @@ export const NewTodo: FC<NewTodoProps> = ({ setTodos }) => {
       <TextInput
         style={styles.newTodo__input}
         placeholder="Título do a fazer"
-        placeholderTextColor={colorThemes.light.newTodo}
+        placeholderTextColor={colorTheme.newTodo.inputColor}
         value={todoTitle}
         onChangeText={setTodoTitle}
       />
 
       <TouchableOpacity onPress={insertTodo} style={styles.newTodo__icon}>
-        <Icon name="plus" size={30} color="#ffffff" />
+        <Icon name="plus" size={30} color={colorTheme.newTodo.iconColor} />
       </TouchableOpacity>
     </View>
   );
