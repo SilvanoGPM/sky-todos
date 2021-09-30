@@ -2,6 +2,8 @@ export const colorThemes = {
   light: {
     neutral: '#ffffff',
     neutralInverted: '#000000',
+
+    headerText: '#fdcb6e',
     newTodo: '#16a085',
     todoText: '#2d3436',
     todoRemove: '#d63031',

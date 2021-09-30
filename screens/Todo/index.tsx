@@ -10,6 +10,7 @@ import { TodosList } from "./components/TodosList";
 import Repository from "../../lib/Repository";
 
 import styles from "./styles";
+import { Header } from "./components/Header";
 
 type TodoType = {
   id: string;
@@ -58,6 +59,8 @@ export function Todo() {
 
   return (
     <SafeAreaView style={styles.container}>
+      <Header />
+
       <NewTodo setTodos={setTodos} />
 
       <UpdateTodo
