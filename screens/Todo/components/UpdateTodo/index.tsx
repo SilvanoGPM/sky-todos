@@ -2,7 +2,15 @@ import React, { FC, useState, useEffect } from "react";
 import Toast from "react-native-root-toast";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import { View, Modal, TouchableOpacity, Text, TextInput } from "react-native";
+import {
+  View,
+  Modal,
+  TouchableOpacity,
+  Text,
+  TextInput,
+  TouchableWithoutFeedbackBase,
+  TouchableWithoutFeedback,
+} from "react-native";
 
 import { validateTodoTitle } from "../../../../utils/validateTodoTitle";
 
@@ -62,7 +70,16 @@ export const UpdateTodo: FC<UpdateTodoProps> = ({
   }
 
   return (
-    <Modal transparent animationType="slide" visible={showModal}>
+    <Modal
+      onRequestClose={closeModal}
+      transparent
+      animationType="slide"
+      visible={showModal}
+    >
+      <TouchableWithoutFeedback onPress={closeModal}>
+        <View style={styles.modal__out} />
+      </TouchableWithoutFeedback>
+
       <View style={styles.modal}>
         <TouchableOpacity onPress={closeModal} style={styles.modal__close}>
           <Icon name="close" size={30} color={colorThemes.light.modalClose} />
