@@ -1,3 +1,4 @@
+import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { RootSiblingParent } from "react-native-root-siblings";
 import { ThemeProvider } from "./context/ThemeContext";
@@ -14,7 +15,7 @@ export default function App() {
   );
 }
 
-// TODO: Refatorar folhas de estilo.
 // TODO: Arrumar mensagens.
 // TODO: Filtro de fazeres.
 // TODO: Agendar notificações para TODOs.
+// TODO: Arrumar os imports.

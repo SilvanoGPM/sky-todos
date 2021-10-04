@@ -19,7 +19,7 @@ const INITIAL_VALUE: ContextType = {
 export const ThemeContext = createContext<ContextType>(INITIAL_VALUE);
 
 export const ThemeProvider: FC<ThemeContextProps> = ({ children }) => {
-  const [theme, setTheme] = useState<ThemesEnum>("dark");
+  const [theme, setTheme] = useState<ThemesEnum>("light");
 
   return (
     <ThemeContext.Provider value={{ theme, setTheme }}>
