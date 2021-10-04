@@ -40,7 +40,7 @@ export function Todo() {
     }
 
     persitsTodos();
-  }, [todos]);
+  }, [todos, loading]);
 
   useEffect(() => {
     async function loadTodos() {

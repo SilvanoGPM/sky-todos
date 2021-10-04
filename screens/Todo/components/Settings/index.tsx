@@ -46,7 +46,7 @@ export const Settings: FC = () => {
     }
 
     loadSettings();
-  }, []);
+  }, [setTheme]);
 
   const styles = getStyles(theme);
   const colorTheme = colorThemes[theme];
