@@ -18,10 +18,13 @@ type TodoType = {
 
 type NewTodoProps = {
   theme: ThemesEnum;
-  setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>
+  setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
 };
 
-export const NewTodo: FC<NewTodoProps> = ({ theme, setTodos }) => {
+export const NewTodo: FC<NewTodoProps> = ({
+  theme,
+  setTodos,
+}) => {
   const [todoTitle, setTodoTitle] = useState<string>("");
 
   const styles = getStyles(theme);
@@ -38,10 +41,7 @@ export const NewTodo: FC<NewTodoProps> = ({ theme, setTodos }) => {
       };
 
       setTodos((todos) => [newTodo, ...todos]);
-
-      if (setTodoTitle) {
-        setTodoTitle("");
-      }
+      setTodoTitle("");
     }
   }
 
@@ -56,7 +56,7 @@ export const NewTodo: FC<NewTodoProps> = ({ theme, setTodos }) => {
       />
 
       <TouchableOpacity onPress={insertTodo} style={styles.newTodo__icon}>
-        <Icon name="plus" size={30} color={colorTheme.newTodo.iconColor} />
+        <Icon name="plus" size={20} color={colorTheme.newTodo.iconColor} />
       </TouchableOpacity>
     </View>
   );

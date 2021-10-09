@@ -1,6 +1,13 @@
 import React, { FC } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { View, Text, FlatList, TouchableOpacity, Alert } from "react-native";
+import {
+  View,
+  Text,
+  FlatList,
+  TouchableOpacity,
+  Alert,
+  StyleSheet,
+} from "react-native";
 
 import { colorThemes } from "../../colorThemes";
 import { getStyles } from "./styles";
@@ -19,6 +26,7 @@ type TodoRenderItem = {
 };
 
 type TodosListProps = {
+  emptyTodosMessage: string;
   todos: TodoType[];
   loading: boolean;
   theme: ThemesEnum;
@@ -27,6 +35,7 @@ type TodosListProps = {
 };
 
 export const TodosList: FC<TodosListProps> = ({
+  emptyTodosMessage,
   todos,
   loading,
   setTodos,
@@ -36,15 +45,14 @@ export const TodosList: FC<TodosListProps> = ({
   const styles = getStyles(theme);
   const colorTheme = colorThemes[theme];
 
-
   function removeTodo(id: string) {
     function exec() {
       const newTodos = todos.filter((todo) => todo.id !== id);
       setTodos(newTodos);
 
-      Toast.show('Todo removido!', {
+      Toast.show("Todo removido!", {
         duration: Toast.durations.SHORT,
-      })
+      });
     }
 
     return () => {
@@ -68,29 +76,11 @@ export const TodosList: FC<TodosListProps> = ({
   function renderItem({ item }: TodoRenderItem) {
     const { id, title, finished } = item;
 
-    const itemStyles = [
-      styles.list__item,
-      finished
-        ? {
-            borderBottomColor: colorTheme.todo.finishedColor,
-            opacity: 0.5,
-          }
-        : {},
-    ];
-
     return (
       <TouchableOpacity onPress={handleSelectedTodo(item)}>
-        <View style={itemStyles}>
+        <View style={[styles.list__item, finished && styles.todo__finished]}>
           <Text
-            style={[
-              styles.list__text,
-              finished
-                ? {
-                    color: colorTheme.todo.finishedColor,
-                    textDecorationLine: "line-through",
-                  }
-                : {},
-            ]}
+            style={[styles.list__text, finished && styles.todo__finished__text]}
           >
             {title}
           </Text>
@@ -124,15 +114,17 @@ export const TodosList: FC<TodosListProps> = ({
     <View style={styles.todos}>
       {loading && <Text style={styles.todos__loading}>Carregando...</Text>}
 
-      {!loading && todos.length === 0 && (
-        <Text style={styles.todos__empty}>Lista está vazia...</Text>
+      {todos.length === 0 && (
+        <Text style={styles.todos__loading}>{emptyTodosMessage}</Text>
       )}
 
-      <FlatList
-        data={todos}
-        keyExtractor={({ id }) => id}
-        renderItem={renderItem}
-      />
+      {todos.length > 0 && (
+        <FlatList
+          data={todos}
+          keyExtractor={({ id }) => id}
+          renderItem={renderItem}
+        />
+      )}
     </View>
   );
 };

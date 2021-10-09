@@ -16,6 +16,5 @@ export default function App() {
 }
 
 // TODO: Arrumar mensagens.
-// TODO: Filtro de fazeres.
-// TODO: Agendar notificações para TODOs.
 // TODO: Arrumar os imports.
+// TODO: Filtar TODOs.

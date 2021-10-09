@@ -8,7 +8,6 @@ export function getStyles(theme: ThemesEnum) {
   const colorTheme = colorThemes[theme];
 
   return StyleSheet.create({
-
     todos: {
       marginVertical: 16,
     },
@@ -31,6 +30,7 @@ export function getStyles(theme: ThemesEnum) {
       paddingVertical: 16,
       borderBottomColor: colorTheme.todo.textColor,
       borderBottomWidth: 1,
+      opacity: 1,
     },
 
     list__text: {
@@ -46,6 +46,16 @@ export function getStyles(theme: ThemesEnum) {
       flexDirection: "row",
       justifyContent: "space-between",
       alignItems: "center",
+    },
+
+    todo__finished: {
+      borderBottomColor: colorTheme.todo.finishedColor,
+      opacity: 0.5,
+    },
+
+    todo__finished__text: {
+      color: colorTheme.todo.finishedColor,
+      textDecorationLine: "line-through",
     },
 
   });

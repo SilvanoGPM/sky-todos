@@ -7,29 +7,41 @@ export function getStyles(theme: ThemesEnum) {
   const colorTheme = colorThemes[theme];
 
   return StyleSheet.create({
-    newTodo: {
+    container: {
+      marginTop: 16,
+     },
+
+    filter: {
       flexDirection: "row",
-      justifyContent: "space-between",
       height: 50,
     },
 
-    newTodo__input: {
-      flex: 1,
+    filter__input: {
+      borderColor: colorTheme.filter.inputColor,
+      color: colorTheme.filter.inputColor,
       borderWidth: 1,
-      borderColor: colorTheme.newTodo.inputColor,
-      color: colorTheme.newTodo.inputColor,
-      paddingHorizontal: 8,
+      padding: 8,
+      flex: 1,
       textAlign: "right",
       borderTopLeftRadius: 4,
       borderBottomLeftRadius: 4,
     },
 
-    newTodo__icon: {
-      backgroundColor: colorTheme.newTodo.iconBackground,
+    filter__send: {
       padding: 8,
+      backgroundColor: colorTheme.filter.inputColor,
       borderTopRightRadius: 4,
       borderBottomRightRadius: 4,
       width: 40,
+      alignItems: "center",
+      justifyContent: "center",
+    },
+
+    filter__close: {
+      marginTop: 20,
+      marginLeft: -10,
+      width: 50,
+      height: 50,
       alignItems: "center",
       justifyContent: "center",
     },

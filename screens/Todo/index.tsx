@@ -14,6 +14,7 @@ import Repository from "../../lib/Repository";
 
 import { getStyles } from "./styles";
 import { StatusBar } from "expo-status-bar";
+import { FilterTodos } from "./components/FilterTodos";
 
 type TodoType = {
   id: string;
@@ -31,10 +32,11 @@ export function Todo() {
   const [loading, setLoading] = useState<boolean>(true);
   const [selectedTodo, setSelectedTodo] = useState<TodoType>({} as TodoType);
   const [todos, setTodos] = useState<TodoType[]>([]);
+  const [filtering, setFiltering] = useState<boolean>(false);
 
   useEffect(() => {
     async function persitsTodos() {
-      if (!loading) {
+      if (!loading && !filtering) {
         await repository.save(TODOS_KEY, todos);
       }
     }
@@ -43,18 +45,19 @@ export function Todo() {
   }, [todos, loading]);
 
   useEffect(() => {
-    async function loadTodos() {
-      const todos = await repository.get(TODOS_KEY);
-
-      if (todos) {
-        setTodos(todos);
-      }
-
-      setLoading(false);
-    }
-
     loadTodos();
   }, []);
+
+  async function loadTodos() {
+    const todos = await repository.get(TODOS_KEY);
+
+    if (todos) {
+      setTodos(todos);
+    }
+
+    setLoading(false);
+    setFiltering(false);
+  }
 
   function handleSelectedTodo(todo: TodoType) {
     return () => {
@@ -63,7 +66,7 @@ export function Todo() {
   }
 
   const styles = getStyles(theme);
-  const statusBarTheme = theme === 'dark' ? 'light' : 'dark';
+  const statusBarTheme = theme === "dark" ? "light" : "dark";
 
   return (
     <SafeAreaView style={styles.container}>
@@ -73,7 +76,17 @@ export function Todo() {
 
       <Header theme={theme} />
 
-      <NewTodo theme={theme} setTodos={setTodos} />
+      <NewTodo theme={theme} setTodos={setTodos} setFiltering={setFiltering} />
+
+      <FilterTodos
+        theme={theme}
+        originalTodos={todos}
+        setFiltering={setFiltering}
+        loading={loading}
+        filtering={filtering}
+        setOriginalTodos={setTodos}
+        handleSelectedTodo={handleSelectedTodo}
+      />
 
       <UpdateTodo
         selectedTodo={selectedTodo}
@@ -83,13 +96,16 @@ export function Todo() {
         setTodos={setTodos}
       />
 
-      <TodosList
-        todos={todos}
-        loading={loading}
-        theme={theme}
-        setTodos={setTodos}
-        handleSelectedTodo={handleSelectedTodo}
-      />
+      {!filtering && (
+        <TodosList
+          todos={todos}
+          loading={loading}
+          theme={theme}
+          setTodos={setTodos}
+          handleSelectedTodo={handleSelectedTodo}
+          emptyTodosMessage="Lista está vazia..."
+        />
+      )}
     </SafeAreaView>
   );
 }

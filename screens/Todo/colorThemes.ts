@@ -47,6 +47,12 @@ export const colorThemes = {
         false: '#ff7675',
       },
     },
+
+    filter: {
+      iconColor: "#ffffff",
+      inputColor: "#3498db",
+      closeIconColor: "red",
+    },
   },
 
   dark: {
@@ -96,6 +102,12 @@ export const colorThemes = {
         true: '#2ecc71',
         false: '#2ecc71',
       },
+    },
+
+    filter: {
+      iconColor: "#ffffff",
+      inputColor: "#3498db",
+      closeIconColor: "red",
     },
   },
 };
