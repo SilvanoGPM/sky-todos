@@ -1,8 +1,7 @@
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { RootSiblingParent } from "react-native-root-siblings";
-import { ThemeProvider } from "./context/ThemeContext";
 
+import { ThemeProvider } from "./context/ThemeContext";
 import { Todo } from "./screens/Todo";
 
 export default function App() {
@@ -14,5 +13,3 @@ export default function App() {
     </ThemeProvider>
   );
 }
-
-// TODO: Arrumar os imports.

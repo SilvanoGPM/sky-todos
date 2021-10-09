@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+
 import { ThemesEnum } from "../../../../context/ThemeContext";
 
 import { colorThemes } from "../../colorThemes";
@@ -9,7 +10,7 @@ export function getStyles(theme: ThemesEnum) {
   return StyleSheet.create({
     container: {
       marginTop: 16,
-     },
+    },
 
     filter: {
       flexDirection: "row",

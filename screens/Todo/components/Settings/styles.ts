@@ -1,4 +1,5 @@
 import { StyleSheet } from "react-native";
+
 import { ThemesEnum } from "../../../../context/ThemeContext";
 
 import { colorThemes } from "../../colorThemes";
@@ -9,11 +10,11 @@ export function getStyles(theme: ThemesEnum) {
   return StyleSheet.create({
     container: {
       backgroundColor: colorTheme.configurations.background,
-      height: '100%',
+      height: "100%",
     },
 
     settings__close: {
-      position: 'absolute',
+      position: "absolute",
       left: 8,
       top: 8,
     },
@@ -24,9 +25,9 @@ export function getStyles(theme: ThemesEnum) {
     },
 
     settings__switch__wrapper: {
-      flexDirection: 'row',
-      justifyContent: 'center',
-      alignItems: 'center',
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
     },
 
     settings__switch__text: {
@@ -45,12 +46,12 @@ export function getStyles(theme: ThemesEnum) {
 
     settings__faq__title: {
       fontSize: 30,
-      textAlign: 'center',
-      textDecorationLine: 'underline',
+      textAlign: "center",
+      textDecorationLine: "underline",
     },
 
     settings__question: {
-      alignItems: 'center',
+      alignItems: "center",
       borderBottomColor: colorTheme.neutralInverted,
       borderBottomWidth: 1,
       paddingBottom: 20,
@@ -58,7 +59,7 @@ export function getStyles(theme: ThemesEnum) {
 
     settings__question__text: {
       marginTop: 20,
-      textAlign: 'center',
+      textAlign: "center",
       fontSize: 20,
     },
   });

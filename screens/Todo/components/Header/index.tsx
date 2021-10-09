@@ -1,5 +1,6 @@
 import React, { FC } from "react";
 import { Text, View } from "react-native";
+
 import { ThemesEnum } from "../../../../context/ThemeContext";
 
 import { getStyles } from "./styles";

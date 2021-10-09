@@ -1,7 +1,9 @@
 import React, { FC, useState } from "react";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+
 import { ThemesEnum } from "../../../../context/ThemeContext";
+
 import { colorThemes } from "../../colorThemes";
 
 type TodoType = {

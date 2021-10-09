@@ -57,7 +57,6 @@ export function getStyles(theme: ThemesEnum) {
       color: colorTheme.todo.finishedColor,
       textDecorationLine: "line-through",
     },
-
   });
 }
 

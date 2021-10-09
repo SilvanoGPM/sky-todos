@@ -2,19 +2,19 @@ import "react-native-get-random-values";
 
 import React, { useContext, useEffect, useState } from "react";
 import { SafeAreaView } from "react-native";
+import { StatusBar } from "expo-status-bar";
 
 import { ThemeContext } from "../../context/ThemeContext";
 import { Settings } from "./components/Settings";
 import { Header } from "./components/Header";
 import { NewTodo } from "./components/NewTodo";
+import { FilterTodos } from "./components/FilterTodos";
 import { UpdateTodo } from "./components/UpdateTodo";
 import { TodosList } from "./components/TodosList";
 
 import Repository from "../../lib/Repository";
 
 import { getStyles } from "./styles";
-import { StatusBar } from "expo-status-bar";
-import { FilterTodos } from "./components/FilterTodos";
 
 type TodoType = {
   id: string;

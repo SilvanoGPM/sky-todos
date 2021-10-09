@@ -1,14 +1,14 @@
 import React, { FC, useState } from "react";
-import Icon from "react-native-vector-icons/FontAwesome";
 import { View, TextInput, TouchableOpacity } from "react-native";
-
+import Icon from "react-native-vector-icons/FontAwesome";
 import { v4 as uuid } from "uuid";
+
+import { ThemesEnum } from "../../../../context/ThemeContext";
 
 import { validateTodoTitle } from "../../../../utils/validateTodoTitle";
 
 import { colorThemes } from "../../colorThemes";
 import { getStyles } from "./styles";
-import { ThemesEnum } from "../../../../context/ThemeContext";
 
 type TodoType = {
   id: string;
@@ -21,10 +21,7 @@ type NewTodoProps = {
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
 };
 
-export const NewTodo: FC<NewTodoProps> = ({
-  theme,
-  setTodos,
-}) => {
+export const NewTodo: FC<NewTodoProps> = ({ theme, setTodos }) => {
   const [todoTitle, setTodoTitle] = useState<string>("");
 
   const styles = getStyles(theme);

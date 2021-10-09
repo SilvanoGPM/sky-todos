@@ -1,8 +1,17 @@
 import React, { FC, useContext, useEffect, useState } from "react";
-import { Modal, Switch, Text, TouchableOpacity, View, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
+import {
+  Modal,
+  Switch,
+  Text,
+  TouchableOpacity,
+  View,
+  ScrollView,
+} from "react-native";
+
 import { ThemeContext, ThemesEnum } from "../../../../context/ThemeContext";
+
 import Repository from "../../../../lib/Repository";
 
 import { colorThemes } from "../../colorThemes";

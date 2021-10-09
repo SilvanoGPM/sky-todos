@@ -11,11 +11,12 @@ import {
   TouchableWithoutFeedback,
 } from "react-native";
 
+import { ThemesEnum } from "../../../../context/ThemeContext";
+
 import { validateTodoTitle } from "../../../../utils/validateTodoTitle";
 
 import { colorThemes } from "../../colorThemes";
 import { getStyles } from "./styles";
-import { ThemesEnum } from "../../../../context/ThemeContext";
 
 type TodoType = {
   id: string;
