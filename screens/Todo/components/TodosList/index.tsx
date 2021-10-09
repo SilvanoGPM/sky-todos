@@ -50,13 +50,13 @@ export const TodosList: FC<TodosListProps> = ({
       const newTodos = todos.filter((todo) => todo.id !== id);
       setTodos(newTodos);
 
-      Toast.show("Todo removido!", {
+      Toast.show("TODO foi removido!", {
         duration: Toast.durations.SHORT,
       });
     }
 
     return () => {
-      Alert.alert("Excluir todo", "Tem certeza que deseja excuir esse todo?", [
+      Alert.alert("Excluir TODO", "Tem certeza que deseja excuir esse TODO?", [
         { text: "Não" },
         { text: "Sim", onPress: exec },
       ]);

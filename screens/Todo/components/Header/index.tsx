@@ -13,7 +13,7 @@ export const Header: FC<HeaderProps> = ({ theme }) => {
 
   return (
     <View style={styles.header}>
-      <Text style={styles.text}>TODOs List</Text>
+      <Text style={styles.text}>Lista de TODOs</Text>
     </View>
   );
 };

@@ -6,7 +6,7 @@ export function validateTodoTitle(todoTitle: string) {
   const clearedTodoTitle = todoTitle.trim();
 
   if (clearedTodoTitle.length > MAX_CHARS_TODO) {
-    const message = `O máximo de caracteres para um a fazer é ${MAX_CHARS_TODO}.`;
+    const message = `O máximo de caracteres para um ToDo é ${MAX_CHARS_TODO}.`;
 
     Toast.show(message, {
       duration: Toast.durations.SHORT,
@@ -18,7 +18,7 @@ export function validateTodoTitle(todoTitle: string) {
   const isTodoTitleValid = clearedTodoTitle && clearedTodoTitle.length >= 3;
 
   if (!isTodoTitleValid) {
-    Toast.show("A fazer precisa ter pelo menos 3 caracteres...", {
+    Toast.show("O ToDo precisa ter pelo menos 3 caracteres...", {
       duration: Toast.durations.SHORT,
     });
 

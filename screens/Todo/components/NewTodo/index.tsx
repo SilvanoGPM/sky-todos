@@ -49,7 +49,7 @@ export const NewTodo: FC<NewTodoProps> = ({
     <View style={styles.newTodo}>
       <TextInput
         style={styles.newTodo__input}
-        placeholder="Título do a fazer"
+        placeholder="Título do TODO"
         placeholderTextColor={colorTheme.newTodo.inputColor}
         value={todoTitle}
         onChangeText={setTodoTitle}

@@ -62,7 +62,7 @@ export const UpdateTodo: FC<UpdateTodoProps> = ({
       setTodos(newTodos);
       closeModal();
 
-      Toast.show("A fazer foi atualizado!", {
+      Toast.show("TODO foi atualizado!", {
         duration: Toast.durations.SHORT,
         position: Toast.positions.CENTER,
       });

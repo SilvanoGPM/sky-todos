@@ -1,5 +1,5 @@
 import React, { FC, useContext, useEffect, useState } from "react";
-import { Modal, Switch, Text, TouchableOpacity, View } from "react-native";
+import { Modal, Switch, Text, TouchableOpacity, View, ScrollView } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 import { ThemeContext, ThemesEnum } from "../../../../context/ThemeContext";
@@ -77,7 +77,7 @@ export const Settings: FC = () => {
       </TouchableOpacity>
 
       <Modal visible={showSettings} animationType="slide">
-        <View style={styles.container}>
+        <ScrollView style={styles.container}>
           <TouchableOpacity
             style={styles.settings__close}
             onPress={closeSettings}
@@ -101,7 +101,22 @@ export const Settings: FC = () => {
               />
             </View>
           </View>
-        </View>
+
+          <View style={styles.settings__faq}>
+            <Text style={styles.settings__faq__title}>
+              Perguntas Frequentes
+            </Text>
+
+            <View style={styles.settings__question}>
+              <Text style={styles.settings__question__text}>
+                O que é um TODO?
+              </Text>
+              <Text style={styles.settings__question__text}>
+                Um TODO é uma tarefa, que você deve realizar, um "a fazer".
+              </Text>
+            </View>
+          </View>
+        </ScrollView>
       </Modal>
     </View>
   );

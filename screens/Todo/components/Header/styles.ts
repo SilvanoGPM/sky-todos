@@ -14,7 +14,8 @@ export function getStyles(theme: ThemesEnum) {
     },
 
     text: {
-      fontSize: 40,
+      fontSize: 30,
+      textAlign: "center",
       color: colorTheme.header.textColor,
       borderBottomWidth: 1,
       borderBottomColor: colorTheme.header.textColor,

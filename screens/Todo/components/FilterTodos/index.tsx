@@ -15,7 +15,6 @@ type FilterTodosProps = {
   loading: boolean;
   filtering: boolean;
   theme: ThemesEnum;
-  setOriginalTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
   handleSelectedTodo: (todo: TodoType) => () => void;
   setFiltering: React.Dispatch<React.SetStateAction<boolean>>;
 };
@@ -26,7 +25,6 @@ import { TodosList } from "../TodosList";
 export const FilterTodos: FC<FilterTodosProps> = ({
   handleSelectedTodo,
   loading,
-  setOriginalTodos,
   filtering,
   theme,
   originalTodos,
@@ -63,9 +61,10 @@ export const FilterTodos: FC<FilterTodosProps> = ({
           value={todosToFilter}
           onChangeText={setTodosToFilter}
           style={styles.filter__input}
-          placeholder="Pesquisar TODO..."
+          placeholder="Pesquisar por TODOs"
           placeholderTextColor={colorTheme.filter.inputColor}
         />
+
         <TouchableOpacity style={styles.filter__send} onPress={filterTodos}>
           <Icon name="search" size={20} color={colorTheme.filter.iconColor} />
         </TouchableOpacity>

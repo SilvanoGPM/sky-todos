@@ -30,13 +30,36 @@ export function getStyles(theme: ThemesEnum) {
     },
 
     settings__switch__text: {
-      fontSize: 30,
+      fontSize: 25,
       color: colorTheme.configurations.color,
     },
 
     settings__switch: {
       transform: [{ scale: 1.2 }],
       marginLeft: 10,
+    },
+
+    settings__faq: {
+      padding: 16,
+    },
+
+    settings__faq__title: {
+      fontSize: 30,
+      textAlign: 'center',
+      textDecorationLine: 'underline',
+    },
+
+    settings__question: {
+      alignItems: 'center',
+      borderBottomColor: colorTheme.neutralInverted,
+      borderBottomWidth: 1,
+      paddingBottom: 20,
+    },
+
+    settings__question__text: {
+      marginTop: 20,
+      textAlign: 'center',
+      fontSize: 20,
     },
   });
 }

@@ -76,7 +76,7 @@ export function Todo() {
 
       <Header theme={theme} />
 
-      <NewTodo theme={theme} setTodos={setTodos} setFiltering={setFiltering} />
+      <NewTodo theme={theme} setTodos={setTodos} />
 
       <FilterTodos
         theme={theme}
@@ -84,7 +84,6 @@ export function Todo() {
         setFiltering={setFiltering}
         loading={loading}
         filtering={filtering}
-        setOriginalTodos={setTodos}
         handleSelectedTodo={handleSelectedTodo}
       />
 

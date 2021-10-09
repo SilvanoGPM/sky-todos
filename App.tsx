@@ -15,6 +15,4 @@ export default function App() {
   );
 }
 
-// TODO: Arrumar mensagens.
 // TODO: Arrumar os imports.
-// TODO: Filtar TODOs.
