@@ -85,7 +85,7 @@ export const Settings: FC = () => {
         />
       </TouchableOpacity>
 
-      <Modal visible={showSettings} animationType="slide">
+      <Modal onRequestClose={closeSettings} visible={showSettings} animationType="slide">
         <ScrollView style={styles.container}>
           <TouchableOpacity
             style={styles.settings__close}
