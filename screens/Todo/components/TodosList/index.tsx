@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import { View, Text, FlatList, TouchableOpacity, Alert } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import Toast from "react-native-root-toast";
+import Toast from "react-native-toast-message";
 
 import { ThemesEnum } from "../../../../context/ThemeContext";
 
@@ -28,6 +28,8 @@ type TodosListProps = {
   handleSelectedTodo: (todo: TodoType) => () => void;
 };
 
+const TOAST_VISIBILITY_TIME = 1000;
+
 export const TodosList: FC<TodosListProps> = ({
   emptyTodosMessage,
   todos,
@@ -44,8 +46,11 @@ export const TodosList: FC<TodosListProps> = ({
       const newTodos = todos.filter((todo) => todo.id !== id);
       setTodos(newTodos);
 
-      Toast.show("TODO foi removido!", {
-        duration: Toast.durations.SHORT,
+      Toast.show({
+        type: "success",
+        text1: "TODO foi removido!",
+        visibilityTime: TOAST_VISIBILITY_TIME,
+        position: "bottom",
       });
     }
 

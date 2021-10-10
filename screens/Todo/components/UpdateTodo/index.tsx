@@ -1,5 +1,5 @@
 import React, { FC, useState, useEffect } from "react";
-import Toast from "react-native-root-toast";
+import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/FontAwesome";
 
 import {
@@ -32,6 +32,8 @@ type UpdateTodoProps = {
   setTodos: (todos: TodoType[]) => void;
 };
 
+const TOAST_VISIBILITY_TIME = 1000;
+
 export const UpdateTodo: FC<UpdateTodoProps> = ({
   selectedTodo,
   todos,
@@ -63,9 +65,11 @@ export const UpdateTodo: FC<UpdateTodoProps> = ({
       setTodos(newTodos);
       closeModal();
 
-      Toast.show("TODO foi atualizado!", {
-        duration: Toast.durations.SHORT,
-        position: Toast.positions.CENTER,
+      Toast.show({
+        type: "success",
+        text1: "TODO foi atualizado!",
+        visibilityTime: TOAST_VISIBILITY_TIME,
+        position: "bottom",
       });
     }
   }
