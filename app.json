@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "SkyTODOs",
-    "slug": "SkyTODOs",
+    "slug": "sky-todos",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/img/icon.png",
@@ -20,9 +20,13 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.github.SkyG0D.sky-todos",
+      "buildNumber": "1.0.0"
     },
     "android": {
+      "package": "com.github.SkyG0D.skytodos",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/img/icon.png",
         "backgroundColor": "#FFFFFF"
