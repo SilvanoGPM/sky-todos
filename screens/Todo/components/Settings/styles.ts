@@ -48,6 +48,7 @@ export function getStyles(theme: ThemesEnum) {
       fontSize: 30,
       textAlign: "center",
       textDecorationLine: "underline",
+      color: colorTheme.neutralInverted,
     },
 
     settings__question: {
@@ -61,6 +62,7 @@ export function getStyles(theme: ThemesEnum) {
       marginTop: 20,
       textAlign: "center",
       fontSize: 20,
+      color: colorTheme.neutralInverted,
     },
   });
 }
