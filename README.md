@@ -27,12 +27,12 @@
 
 ## Imagens :sparkles:
 
-![Criar TODO](./assets/preview/create.gif)
-![Lista de TODOs](./assets/preview/list.jpeg)
-![Filtrar TODO](./assets/preview/filter.jpeg)
-![Remover TODO](./assets/preview/remove.jpeg)
-![Atualizar TODO](./assets/preview/update.jpeg)
-![Configurações](./assets/preview/settings.jpeg)
+<img alt="Criar TODO" src="./assets/preview/create.gif" width=300 height=575 />
+<img alt="Lista de TODOs" src="./assets/preview/list.jpeg" width=300 height=575 />
+<img alt="Filtrar TODO" src="./assets/preview/filter.jpeg" width=300 height=575 />
+<img alt="Remover TODO" src="./assets/preview/remove.jpeg" width=300 height=575 />
+<img alt="Atualizar TODO" src="./assets/preview/update.jpeg" width=300 height=575 />
+<img alt="Configurações" src="./assets/preview/settings.jpeg" width=300 height=575 />
 
 ## Instalar/Executar :hammer:
 
