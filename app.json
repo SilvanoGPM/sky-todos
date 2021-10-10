@@ -8,7 +8,7 @@
     "splash": {
       "image": "./assets/img/splash.png",
       "resizeMode": "cover",
-      "backgroundColor": "#000000"
+      "backgroundColor": "#ffffff"
     },
     "androidStatusBar": {
       "barStyle": "light-content"
