@@ -5,7 +5,7 @@ import Toast from "react-native-toast-message";
 
 import { ThemesEnum } from "../../../../context/ThemeContext";
 
-import { colorThemes } from "../../colorThemes";
+import { colorThemes } from "../../../colorThemes";
 import { getStyles } from "./styles";
 
 type TodoType = {

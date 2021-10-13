@@ -2,7 +2,7 @@ import { StyleSheet, StatusBar } from "react-native";
 
 import { ThemesEnum } from "../../context/ThemeContext";
 
-import { colorThemes } from "./colorThemes";
+import { colorThemes } from "../colorThemes";
 
 export function getStyles(theme: ThemesEnum) {
   const colorTheme = colorThemes[theme];

@@ -4,7 +4,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 
 import { ThemesEnum } from "../../../../context/ThemeContext";
 
-import { colorThemes } from "../../colorThemes";
+import { colorThemes } from "../../../colorThemes";
 
 type TodoType = {
   id: string;

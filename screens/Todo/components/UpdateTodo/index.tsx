@@ -15,7 +15,7 @@ import { ThemesEnum } from "../../../../context/ThemeContext";
 
 import { validateTodoTitle } from "../../../../utils/validateTodoTitle";
 
-import { colorThemes } from "../../colorThemes";
+import { colorThemes } from "../../../colorThemes";
 import { getStyles } from "./styles";
 
 type TodoType = {

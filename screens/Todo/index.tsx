@@ -5,7 +5,6 @@ import { SafeAreaView } from "react-native";
 import { StatusBar } from "expo-status-bar";
 
 import { ThemeContext } from "../../context/ThemeContext";
-import { Settings } from "./components/Settings";
 import { Header } from "./components/Header";
 import { NewTodo } from "./components/NewTodo";
 import { FilterTodos } from "./components/FilterTodos";
@@ -71,8 +70,6 @@ export function Todo() {
   return (
     <SafeAreaView style={styles.container}>
       <StatusBar animated style={statusBarTheme} />
-
-      <Settings />
 
       <Header theme={theme} />
 
