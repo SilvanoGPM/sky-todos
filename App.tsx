@@ -5,14 +5,17 @@ import { StatusBar } from "expo-status-bar";
 
 import { TodosWrapper } from "./screens/TodosWrapper";
 import { ThemeProvider } from "./context/ThemeContext";
+import { TodoProvider } from "./context/TodoContext";
 
 export default function App() {
   return (
     <NavigationContainer>
       <ThemeProvider>
-        <StatusBar style="light" />
-        <TodosWrapper />
-        <Toast ref={(ref) => Toast.setRef(ref)} />
+        <TodoProvider>
+          <StatusBar style="light" />
+          <TodosWrapper />
+          <Toast ref={(ref) => Toast.setRef(ref)} />
+        </TodoProvider>
       </ThemeProvider>
     </NavigationContainer>
   );

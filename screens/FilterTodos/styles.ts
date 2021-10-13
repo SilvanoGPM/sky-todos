@@ -1,15 +1,17 @@
 import { StyleSheet } from "react-native";
 
-import { ThemesEnum } from "../../../../context/ThemeContext";
+import { ThemesEnum } from "../../context/ThemeContext";
 
-import { colorThemes } from "../../../colorThemes";
+import { colorThemes } from "../colorThemes";
 
 export function getStyles(theme: ThemesEnum) {
   const colorTheme = colorThemes[theme];
 
   return StyleSheet.create({
     container: {
-      marginTop: 16,
+      flex: 1,
+      padding: 16,
+      backgroundColor: colorTheme.backgroundColor,
     },
 
     filter: {

@@ -3,9 +3,9 @@ import { View, Text, FlatList, TouchableOpacity, Alert } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Toast from "react-native-toast-message";
 
-import { ThemesEnum } from "../../../../context/ThemeContext";
+import { ThemesEnum } from "../../context/ThemeContext";
 
-import { colorThemes } from "../../../colorThemes";
+import { colorThemes } from "../../screens/colorThemes";
 import { getStyles } from "./styles";
 
 type TodoType = {
