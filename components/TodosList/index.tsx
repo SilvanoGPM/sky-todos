@@ -6,7 +6,7 @@ import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { ThemesEnum } from "../../context/ThemeContext";
 import { colorThemes } from "../../screens/colorThemes";
-import { TodoListRouteParamList } from "../../types/NavigationTypes";
+import { TodoListRouteParamList } from "../../types/navigation-types";
 import { getStyles } from "./styles";
 
 type TodoType = {
@@ -29,7 +29,10 @@ type TodosListProps = {
 
 const TOAST_VISIBILITY_TIME = 1000;
 
-type TodoListNavigationProp = StackNavigationProp<TodoListRouteParamList, "UpdateTodo">;
+type TodoListNavigationProp = StackNavigationProp<
+  TodoListRouteParamList,
+  "UpdateTodo"
+>;
 
 export const TodosList: FC<TodosListProps> = ({
   emptyTodosMessage,
@@ -46,9 +49,6 @@ export const TodosList: FC<TodosListProps> = ({
     return () => {
       navigation.navigate("UpdateTodo", {
         selectedTodo: todo,
-        setTodos,
-        theme,
-        todos,
       });
     };
   }

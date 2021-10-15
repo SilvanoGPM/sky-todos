@@ -5,7 +5,7 @@ import Icon from "react-native-vector-icons/FontAwesome";
 import { ThemeContext } from "../../context/ThemeContext";
 import { TodoContext } from "../../context/TodoContext";
 import { colorThemes } from "../../screens/colorThemes";
-import { TodoListRouteStackParamList } from "../../types/NavigationTypes";
+import { TodoListRouteStackParamList } from "../../types/navigation-types";
 import { validateTodoTitle } from "../../utils/validateTodoTitle";
 import { getStyles } from "./styles";
 

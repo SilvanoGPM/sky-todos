@@ -27,6 +27,11 @@ export const FilterTodos: FC = () => {
   const styles = getStyles(theme);
   const colorTheme = colorThemes[theme];
 
+  function resetTodos() {
+    setTodosToFilter("");
+    setTodos(originalTodos);
+  }
+
   function filterTodos() {
     const clearedTodosToFilter = todosToFilter.trim().toLowerCase();
 
@@ -35,10 +40,7 @@ export const FilterTodos: FC = () => {
         title.toLocaleLowerCase().includes(clearedTodosToFilter)
       );
 
-      console.log(newTodos);
-
       setTodos(newTodos);
-      setTodosToFilter("");
     }
   }
   return (
@@ -57,19 +59,22 @@ export const FilterTodos: FC = () => {
         </TouchableOpacity>
       </View>
 
-      {Boolean(todosToFilter) && (
-        <TouchableOpacity
-          style={styles.filter__close}
-          onPress={() => setTodosToFilter("")}
-        >
-          <Text>
-            <Icon
-              name="remove"
-              size={40}
-              color={colorTheme.filter.closeIconColor}
-            />
-          </Text>
-        </TouchableOpacity>
+      {todos.length !== originalTodos.length && (
+        <>
+          <TouchableOpacity style={styles.filter__close} onPress={resetTodos}>
+            <Text>
+              <Icon
+                name="remove"
+                size={40}
+                color={colorTheme.filter.closeIconColor}
+              />
+            </Text>
+          </TouchableOpacity>
+
+          <View>
+            <Text>Pesquisando por: {todosToFilter}</Text>
+          </View>
+        </>
       )}
 
       <TodosList

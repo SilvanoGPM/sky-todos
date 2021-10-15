@@ -29,7 +29,12 @@ export default function App() {
               component={TodosWrapper}
               options={{ headerShown: false }}
             />
-            <Stack.Screen name="UpdateTodo" component={UpdateTodo} />
+
+            <Stack.Screen
+              name="UpdateTodo"
+              component={UpdateTodo}
+              options={{ title: "Atualizar TODO" }}
+            />
           </Stack.Navigator>
 
           <Toast ref={(ref) => Toast.setRef(ref)} />
