@@ -1,11 +1,12 @@
+import { CompositeNavigationProp, useNavigation } from "@react-navigation/core";
+import { StackNavigationProp } from "@react-navigation/stack";
 import React, { FC } from "react";
-import { View, Text, FlatList, TouchableOpacity, Alert } from "react-native";
-import Icon from "react-native-vector-icons/FontAwesome";
+import { Alert, FlatList, Text, TouchableOpacity, View } from "react-native";
 import Toast from "react-native-toast-message";
-
+import Icon from "react-native-vector-icons/FontAwesome";
 import { ThemesEnum } from "../../context/ThemeContext";
-
 import { colorThemes } from "../../screens/colorThemes";
+import { TodoListRouteParamList } from "../../types/NavigationTypes";
 import { getStyles } from "./styles";
 
 type TodoType = {
@@ -22,24 +23,35 @@ type TodoRenderItem = {
 type TodosListProps = {
   emptyTodosMessage: string;
   todos: TodoType[];
-  loading: boolean;
   theme: ThemesEnum;
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
-  handleSelectedTodo: (todo: TodoType) => () => void;
 };
 
 const TOAST_VISIBILITY_TIME = 1000;
 
+type TodoListNavigationProp = StackNavigationProp<TodoListRouteParamList, "UpdateTodo">;
+
 export const TodosList: FC<TodosListProps> = ({
   emptyTodosMessage,
   todos,
-  loading,
-  setTodos,
   theme,
-  handleSelectedTodo,
+  setTodos,
 }) => {
+  const navigation = useNavigation<TodoListNavigationProp>();
+
   const styles = getStyles(theme);
   const colorTheme = colorThemes[theme];
+
+  function handleSelectedTodo(todo: TodoType) {
+    return () => {
+      navigation.navigate("UpdateTodo", {
+        selectedTodo: todo,
+        setTodos,
+        theme,
+        todos,
+      });
+    };
+  }
 
   function removeTodo(id: string) {
     function exec() {
@@ -111,8 +123,6 @@ export const TodosList: FC<TodosListProps> = ({
 
   return (
     <View style={styles.todos}>
-      {loading && <Text style={styles.todos__loading}>Carregando...</Text>}
-
       {todos.length === 0 && (
         <Text style={styles.todos__loading}>{emptyTodosMessage}</Text>
       )}

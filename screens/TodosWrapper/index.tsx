@@ -6,40 +6,43 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { ShowTodos } from "../ShowTodos";
 import { Settings } from "../Settings";
 import { FilterTodos } from "../FilterTodos";
+import { Text } from "react-native";
 
 const Tab = createBottomTabNavigator();
 
 export const TodosWrapper: FC = () => {
   return (
-    <Tab.Navigator initialRouteName="TodosList">
-      <Tab.Screen
-        name="TodosList"
-        component={ShowTodos}
-        options={{
-          title: "SkyTODOs",
-          tabBarLabel: "TODOs",
-          tabBarIcon: (props) => <Icon5 name="tasks" {...props} />,
-        }}
-      />
+    <>
+      <Tab.Navigator initialRouteName="TodosList">
+        <Tab.Screen
+          name="TodosList"
+          component={ShowTodos}
+          options={{
+            title: "SkyTODOs",
+            tabBarLabel: "TODOs",
+            tabBarIcon: (props) => <Icon5 name="tasks" {...props} />,
+          }}
+        />
 
-      <Tab.Screen
-        name="FilterTodos"
-        component={FilterTodos}
-        options={{
-          title: "Filtrar TODOs",
-          tabBarLabel: "Filtrar",
-          tabBarIcon: (props) => <Icon5 name="search" {...props} />,
-        }}
-      />
+        <Tab.Screen
+          name="FilterTodos"
+          component={FilterTodos}
+          options={{
+            title: "Filtrar TODOs",
+            tabBarLabel: "Filtrar",
+            tabBarIcon: (props) => <Icon5 name="search" {...props} />,
+          }}
+        />
 
-      <Tab.Screen
-        name="Settings"
-        component={Settings}
-        options={{
-          title: "Configurações",
-          tabBarIcon: (props) => <Icon name="gear" {...props} />,
-        }}
-      />
-    </Tab.Navigator>
+        <Tab.Screen
+          name="Settings"
+          component={Settings}
+          options={{
+            title: "Configurações",
+            tabBarIcon: (props) => <Icon name="gear" {...props} />,
+          }}
+        />
+      </Tab.Navigator>
+    </>
   );
 };

@@ -1,4 +1,4 @@
-import { StyleSheet, StatusBar } from "react-native";
+import { StyleSheet } from "react-native";
 
 import { ThemesEnum } from "../../context/ThemeContext";
 
@@ -12,7 +12,6 @@ export function getStyles(theme: ThemesEnum) {
     container: {
       flex: 1,
       padding: 16,
-      paddingTop: 16 + (StatusBar.currentHeight || 0),
       backgroundColor: colorTheme.backgroundColor,
     },
 

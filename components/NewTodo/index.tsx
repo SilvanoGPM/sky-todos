@@ -3,11 +3,11 @@ import { View, TextInput, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { v4 as uuid } from "uuid";
 
-import { ThemesEnum } from "../../../../context/ThemeContext";
+import { ThemesEnum } from "../../context/ThemeContext";
 
-import { validateTodoTitle } from "../../../../utils/validateTodoTitle";
+import { validateTodoTitle } from "../../utils/validateTodoTitle";
 
-import { colorThemes } from "../../../colorThemes";
+import { colorThemes } from "../../screens/colorThemes";
 import { getStyles } from "./styles";
 
 type TodoType = {

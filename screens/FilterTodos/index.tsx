@@ -1,14 +1,11 @@
-import React, { FC, useContext, useState } from "react";
+import React, { FC, useContext, useEffect, useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-
-import { ThemeContext, ThemesEnum } from "../../context/ThemeContext";
-
-import { colorThemes } from "../colorThemes";
-
-import { getStyles } from "./styles";
 import { TodosList } from "../../components/TodosList";
+import { ThemeContext } from "../../context/ThemeContext";
 import { TodoContext } from "../../context/TodoContext";
+import { colorThemes } from "../colorThemes";
+import { getStyles } from "./styles";
 
 type TodoType = {
   id: string;
@@ -23,6 +20,10 @@ export const FilterTodos: FC = () => {
   const [todosToFilter, setTodosToFilter] = useState<string>("");
   const [todos, setTodos] = useState<TodoType[]>(originalTodos);
 
+  useEffect(() => {
+    setTodos(originalTodos);
+  }, [originalTodos]);
+
   const styles = getStyles(theme);
   const colorTheme = colorThemes[theme];
 
@@ -33,6 +34,8 @@ export const FilterTodos: FC = () => {
       const newTodos = originalTodos.filter(({ title }) =>
         title.toLocaleLowerCase().includes(clearedTodosToFilter)
       );
+
+      console.log(newTodos);
 
       setTodos(newTodos);
       setTodosToFilter("");
@@ -70,8 +73,6 @@ export const FilterTodos: FC = () => {
       )}
 
       <TodosList
-        handleSelectedTodo={(todo) => () => {}}
-        loading={false}
         setTodos={setTodos}
         theme={theme}
         todos={todos}
