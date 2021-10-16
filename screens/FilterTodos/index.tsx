@@ -1,12 +1,14 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+
+import { TodoType } from "../../types/types";
 import { TodosList } from "../../components/TodosList";
 import { SettingsContext } from "../../context/SettingsContext";
 import { TodoContext } from "../../context/TodoContext";
-import { colorThemes } from "../colorThemes";
+
+import { colorThemes } from "../../colorThemes";
 import { getStyles } from "./styles";
-import { TodoType } from "../../types/types";
 
 export function FilterTodos() {
   const { theme } = useContext(SettingsContext).settings;

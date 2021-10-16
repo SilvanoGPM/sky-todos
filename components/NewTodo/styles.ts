@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import { ThemesEnum } from "../../context/SettingsContext";
 
-import { colorThemes } from "../../screens/colorThemes";
+import { colorThemes } from "../../colorThemes";
 
 export function getStyles(theme: ThemesEnum) {
   const colorTheme = colorThemes[theme];

@@ -1,15 +1,19 @@
 import React, { FC, useContext, useEffect, useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { Text, TextInput, TouchableOpacity, View } from "react-native";
+
+import { TOAST_VISIBILITY_TIME } from "../../globals";
+
+import { TodoListRouteStackParamList } from "../../types/navigation-types";
 import { SettingsContext } from "../../context/SettingsContext";
 import { TodoContext } from "../../context/TodoContext";
-import { colorThemes } from "../../screens/colorThemes";
-import { TodoListRouteStackParamList } from "../../types/navigation-types";
-import { validateTodoTitle } from "../../utils/validateTodoTitle";
-import { getStyles } from "./styles";
-import { TOAST_VISIBILITY_TIME } from "../../globals";
+
 import { formatDisplayDate } from "../../utils/formatDisplayDate";
+import { validateTodoTitle } from "../../utils/validateTodoTitle";
+
+import { getStyles } from "./styles";
+import { colorThemes } from "../../colorThemes";
 
 export const UpdateTodo: FC<TodoListRouteStackParamList<"UpdateTodo">> = ({
   navigation,

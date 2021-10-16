@@ -11,7 +11,10 @@ export default function App() {
     <NavigationContainer>
       <SettingsProvider>
         <TodoProvider>
+          <StatusBar style="light" />
+
           <Screens />
+
           <Toast ref={(ref) => Toast.setRef(ref)} />
         </TodoProvider>
       </SettingsProvider>

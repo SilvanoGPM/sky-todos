@@ -1,16 +1,15 @@
-import React, { FC, useContext } from "react";
+import React, { useContext } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon5 from "react-native-vector-icons/FontAwesome5";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
+import { SettingsContext } from "../../context/SettingsContext";
 import { ShowTodos } from "../ShowTodos";
 import { Settings } from "../Settings";
 import { FilterTodos } from "../FilterTodos";
-import { Text } from "react-native";
 
 import { getStyles } from "../styles";
-import { colorThemes } from "../colorThemes";
-import { SettingsContext } from "../../context/SettingsContext";
+import { colorThemes } from "../../colorThemes";
 
 const Tab = createBottomTabNavigator();
 

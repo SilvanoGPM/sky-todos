@@ -1,4 +1,5 @@
 import Toast from "react-native-toast-message";
+
 import { TOAST_VISIBILITY_TIME } from "../globals";
 
 export const MAX_CHARS_TODO = 200;

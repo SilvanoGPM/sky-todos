@@ -1,8 +1,10 @@
-import { StatusBar, StatusBarStyle } from "expo-status-bar";
 import React, { createContext, FC, useState, useEffect } from "react";
+import { StatusBar, StatusBarStyle } from "expo-status-bar";
 import { ActivityIndicator, Appearance, StyleSheet, View } from "react-native";
+
 import Repository from "../lib/Repository";
-import { colorThemes } from "../screens/colorThemes";
+
+import { colorThemes } from "../colorThemes";
 
 export type ThemesEnum = "light" | "dark" | "dracula";
 

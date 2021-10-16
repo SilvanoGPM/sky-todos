@@ -8,12 +8,12 @@ import React, {
 
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 
+import { TodoType } from "../types/types";
 import { SettingsContext } from "./SettingsContext";
 
 import Repository from "../lib/Repository";
 
-import { colorThemes } from "../screens/colorThemes";
-import { TodoType } from "../types/types";
+import { colorThemes } from "../colorThemes";
 
 type ContextType = {
   todos: TodoType[];

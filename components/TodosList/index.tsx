@@ -1,15 +1,18 @@
-import { useNavigation } from "@react-navigation/core";
-import { StackNavigationProp } from "@react-navigation/stack";
 import React, { FC } from "react";
-import { Alert, FlatList, Text, TouchableOpacity, View } from "react-native";
 import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { ThemesEnum } from "../../context/SettingsContext";
+import { StackNavigationProp } from "@react-navigation/stack";
+import { Alert, FlatList, Text, TouchableOpacity, View } from "react-native";
+import { useNavigation } from "@react-navigation/core";
+
 import { TOAST_VISIBILITY_TIME } from "../../globals";
-import { colorThemes } from "../../screens/colorThemes";
-import { TodoListRouteParamList } from "../../types/navigation-types";
-import { getStyles } from "./styles";
+
 import { TodoType } from "../../types/types";
+import { ThemesEnum } from "../../context/SettingsContext";
+import { TodoListRouteParamList } from "../../types/navigation-types";
+
+import { colorThemes } from "../../colorThemes";
+import { getStyles } from "./styles";
 
 type TodoRenderItem = {
   item: TodoType;

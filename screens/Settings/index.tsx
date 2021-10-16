@@ -1,10 +1,11 @@
 import React, { FC, useContext, useState } from "react";
-import { ScrollView, Switch, Text, View } from "react-native";
-import { TouchableOpacity } from "react-native-gesture-handler";
+import { ScrollView, Text, View, TouchableOpacity } from "react-native";
+
 import { SettingsContext, ThemesEnum } from "../../context/SettingsContext";
-import { colorThemes } from "../colorThemes";
 import { ThemeSelect } from "./components/ThemeSelect";
+
 import { getStyles } from "./styles";
+import { colorThemes } from "../../colorThemes";
 
 export const Settings: FC = () => {
   const { settings, setSettings } = useContext(SettingsContext);

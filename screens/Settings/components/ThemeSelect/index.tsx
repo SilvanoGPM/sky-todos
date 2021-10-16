@@ -1,9 +1,11 @@
 import React, { FC } from "react";
-import { Picker } from "@react-native-picker/picker";
-import { ThemesEnum } from "../../../../context/SettingsContext";
-import { getStyles } from "./styles";
-import { colorThemes } from "../../../colorThemes";
 import { View } from "react-native";
+import { Picker } from "@react-native-picker/picker";
+
+import { ThemesEnum } from "../../../../context/SettingsContext";
+
+import { getStyles } from "./styles";
+import { colorThemes } from "../../../../colorThemes";
 
 type ThemeSelectProps = {
   theme: ThemesEnum;

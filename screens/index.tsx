@@ -1,4 +1,4 @@
-import React, { FC, useContext } from "react";
+import React, { useContext } from "react";
 import { createStackNavigator } from "@react-navigation/stack";
 
 import { TodosWrapper } from "./TodosWrapper";
@@ -6,7 +6,7 @@ import { UpdateTodo } from "../components/UpdateTodo";
 import { SettingsContext } from "../context/SettingsContext";
 
 import { getStyles } from "./styles";
-import { colorThemes } from "./colorThemes";
+import { colorThemes } from "../colorThemes";
 
 const Stack = createStackNavigator();
 
