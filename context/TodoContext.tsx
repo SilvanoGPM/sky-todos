@@ -13,7 +13,7 @@ import { SettingsContext } from "./SettingsContext";
 
 import Repository from "../lib/Repository";
 
-import { colorThemes } from "../colorThemes";
+import { colorThemes } from "../colorTheme";
 
 type ContextType = {
   todos: TodoType[];

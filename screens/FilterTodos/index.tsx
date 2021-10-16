@@ -7,7 +7,7 @@ import { TodosList } from "../../components/TodosList";
 import { SettingsContext } from "../../context/SettingsContext";
 import { TodoContext } from "../../context/TodoContext";
 
-import { colorThemes } from "../../colorThemes";
+import { colorThemes } from "../../colorTheme";
 import { getStyles } from "./styles";
 
 export function FilterTodos() {

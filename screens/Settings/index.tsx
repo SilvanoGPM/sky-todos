@@ -5,7 +5,7 @@ import { SettingsContext, ThemesEnum } from "../../context/SettingsContext";
 import { ThemeSelect } from "./components/ThemeSelect";
 
 import { getStyles } from "./styles";
-import { colorThemes } from "../../colorThemes";
+import { colorThemes } from "../../colorTheme";
 
 export const Settings: FC = () => {
   const { settings, setSettings } = useContext(SettingsContext);

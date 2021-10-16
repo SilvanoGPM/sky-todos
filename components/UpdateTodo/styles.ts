@@ -2,7 +2,7 @@ import { StyleSheet } from "react-native";
 
 import { ThemesEnum } from "../../context/SettingsContext";
 
-import { colorThemes } from "../../colorThemes";
+import { colorThemes } from "../../colorTheme";
 
 export function getStyles(theme: ThemesEnum) {
   const colorTheme = colorThemes[theme];
@@ -77,7 +77,7 @@ export function getStyles(theme: ThemesEnum) {
     },
 
     modal__save: {
-      width: "80%",
+      width: "100%",
       flexDirection: "row",
       justifyContent: "center",
       alignItems: "center",

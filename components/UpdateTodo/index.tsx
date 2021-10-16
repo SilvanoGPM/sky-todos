@@ -13,7 +13,7 @@ import { formatDisplayDate } from "../../utils/formatDisplayDate";
 import { validateTodoTitle } from "../../utils/validateTodoTitle";
 
 import { getStyles } from "./styles";
-import { colorThemes } from "../../colorThemes";
+import { colorThemes } from "../../colorTheme";
 
 export const UpdateTodo: FC<TodoListRouteStackParamList<"UpdateTodo">> = ({
   navigation,

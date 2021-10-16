@@ -9,7 +9,7 @@ import { Settings } from "../Settings";
 import { FilterTodos } from "../FilterTodos";
 
 import { getStyles } from "../styles";
-import { colorThemes } from "../../colorThemes";
+import { colorThemes } from "../../colorTheme";
 
 const Tab = createBottomTabNavigator();
 

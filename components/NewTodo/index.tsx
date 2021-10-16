@@ -7,7 +7,7 @@ import { ThemesEnum } from "../../context/SettingsContext";
 
 import { validateTodoTitle } from "../../utils/validateTodoTitle";
 
-import { colorThemes } from "../../colorThemes";
+import { colorThemes } from "../../colorTheme";
 import { getStyles } from "./styles";
 import { TodoType } from "../../types/types";
 

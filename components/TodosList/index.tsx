@@ -11,7 +11,7 @@ import { TodoType } from "../../types/types";
 import { ThemesEnum } from "../../context/SettingsContext";
 import { TodoListRouteParamList } from "../../types/navigation-types";
 
-import { colorThemes } from "../../colorThemes";
+import { colorThemes } from "../../colorTheme";
 import { getStyles } from "./styles";
 
 type TodoRenderItem = {

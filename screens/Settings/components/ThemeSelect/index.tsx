@@ -5,7 +5,7 @@ import { Picker } from "@react-native-picker/picker";
 import { ThemesEnum } from "../../../../context/SettingsContext";
 
 import { getStyles } from "./styles";
-import { colorThemes } from "../../../../colorThemes";
+import { colorThemes } from "../../../../colorTheme";
 
 type ThemeSelectProps = {
   theme: ThemesEnum;

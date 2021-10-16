@@ -6,7 +6,7 @@ import { UpdateTodo } from "../components/UpdateTodo";
 import { SettingsContext } from "../context/SettingsContext";
 
 import { getStyles } from "./styles";
-import { colorThemes } from "../colorThemes";
+import { colorThemes } from "../colorTheme";
 
 const Stack = createStackNavigator();
 
