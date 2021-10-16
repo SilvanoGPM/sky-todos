@@ -1,19 +1,8 @@
 import React, { FC, useContext, useEffect, useState } from "react";
-import Icon from "react-native-vector-icons/FontAwesome";
-
-import {
-  Modal,
-  Switch,
-  Text,
-  TouchableOpacity,
-  View,
-  ScrollView,
-} from "react-native";
-
+import { ScrollView, Switch, Text, View } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 import { ThemeContext, ThemesEnum } from "../../context/ThemeContext";
-
 import Repository from "../../lib/Repository";
-
 import { colorThemes } from "../colorThemes";
 import { getStyles } from "./styles";
 
@@ -30,6 +19,7 @@ export const Settings: FC = () => {
 
   const [loading, setLoading] = useState<boolean>(true);
   const [settings, setSettings] = useState<SettingsType>({ theme });
+  const [showFAQ, setShowFAQ] = useState<boolean>(false);
 
   useEffect(() => {
     async function persistSettings() {
@@ -59,6 +49,10 @@ export const Settings: FC = () => {
   const styles = getStyles(theme);
   const colorTheme = colorThemes[theme];
 
+  function toggleShowFAQ() {
+    setShowFAQ(!showFAQ);
+  }
+
   function switchTheme(value: boolean) {
     const theme = value ? "dark" : "light";
 
@@ -82,18 +76,33 @@ export const Settings: FC = () => {
           </View>
         </View>
 
-        <View style={styles.settings__faq}>
-          <Text style={styles.settings__faq__title}>Perguntas Frequentes</Text>
-
-          <View style={styles.settings__question}>
-            <Text style={styles.settings__question__text}>
-              O que é um TODO?
+        <View style={styles.settings__center}>
+          <TouchableOpacity
+            onPress={toggleShowFAQ}
+            style={styles.settings__showFAQ}
+          >
+            <Text style={styles.settings__showFAQ__text}>
+              {showFAQ ? "Esconder" : "Mostrar"} FAQ
             </Text>
-            <Text style={styles.settings__question__text}>
-              Um TODO é uma tarefa, que você deve realizar, um "a fazer".
-            </Text>
-          </View>
+          </TouchableOpacity>
         </View>
+
+        {showFAQ && (
+          <View style={styles.settings__faq}>
+            <Text style={styles.settings__faq__title}>
+              Perguntas Frequentes
+            </Text>
+
+            <View style={styles.settings__question}>
+              <Text style={styles.settings__question__text}>
+                O que é um TODO?
+              </Text>
+              <Text style={styles.settings__question__text}>
+                Um TODO é uma tarefa, que você deve realizar, um "a fazer".
+              </Text>
+            </View>
+          </View>
+        )}
       </ScrollView>
     </View>
   );

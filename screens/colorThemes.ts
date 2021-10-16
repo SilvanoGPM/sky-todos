@@ -53,6 +53,8 @@ export const colorThemes = {
         true: "#ff7675",
         false: "#ff7675",
       },
+      showFAQ: "#16a085",
+      showFAQColor: "#ffffff",
     },
 
     filter: {
@@ -118,6 +120,8 @@ export const colorThemes = {
         true: "#2ecc71",
         false: "#2ecc71",
       },
+      showFAQ: "#00cec9",
+      showFAQColor: "#ffffff",
     },
 
     filter: {

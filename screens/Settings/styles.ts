@@ -40,8 +40,23 @@ export function getStyles(theme: ThemesEnum) {
       marginLeft: 10,
     },
 
+    settings__center: {
+      alignItems: "center",
+      width: '100%',
+    },
+
+    settings__showFAQ: {
+      paddingVertical: 8,
+      paddingHorizontal: 32,
+      backgroundColor: colorTheme.configurations.showFAQ,
+    },
+
+    settings__showFAQ__text: {
+      color: colorTheme.configurations.showFAQColor,
+    },
+
     settings__faq: {
-      padding: 16,
+      paddingHorizontal: 16,
     },
 
     settings__faq__title: {
