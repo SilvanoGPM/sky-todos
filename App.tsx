@@ -1,7 +1,8 @@
-import { NavigationContainer } from "@react-navigation/native";
-import { StatusBar } from "expo-status-bar";
 import React from "react";
 import Toast from "react-native-toast-message";
+import { StatusBar } from "expo-status-bar";
+import { NavigationContainer } from "@react-navigation/native";
+
 import { SettingsProvider } from "./context/SettingsContext";
 import { TodoProvider } from "./context/TodoContext";
 import { Screens } from "./screens";
