@@ -2,7 +2,7 @@ import React, { FC, useContext, useEffect, useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { ThemeContext } from "../../context/ThemeContext";
+import { SettingsContext } from "../../context/SettingsContext";
 import { TodoContext } from "../../context/TodoContext";
 import { colorThemes } from "../../screens/colorThemes";
 import { TodoListRouteStackParamList } from "../../types/navigation-types";
@@ -15,7 +15,7 @@ export const UpdateTodo: FC<TodoListRouteStackParamList<"UpdateTodo">> = ({
   navigation,
   route,
 }) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(SettingsContext).settings;
   const { todos, setTodos } = useContext(TodoContext);
 
   const [todoToUpdate, setTodoToUpdate] = useState<string>("");

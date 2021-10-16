@@ -10,12 +10,12 @@ import { Text } from "react-native";
 
 import { getStyles } from "../styles";
 import { colorThemes } from "../colorThemes";
-import { ThemeContext } from "../../context/ThemeContext";
+import { SettingsContext } from "../../context/SettingsContext";
 
 const Tab = createBottomTabNavigator();
 
 export function TodosWrapper() {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(SettingsContext).settings;
 
   const styles = getStyles(theme);
   const colorTheme = colorThemes[theme];

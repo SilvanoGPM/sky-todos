@@ -4,7 +4,7 @@ import React, { FC } from "react";
 import { Alert, FlatList, Text, TouchableOpacity, View } from "react-native";
 import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/FontAwesome";
-import { ThemesEnum } from "../../context/ThemeContext";
+import { ThemesEnum } from "../../context/SettingsContext";
 import { colorThemes } from "../../screens/colorThemes";
 import { TodoListRouteParamList } from "../../types/navigation-types";
 import { getStyles } from "./styles";

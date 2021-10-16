@@ -1,53 +1,18 @@
 import React, { FC, useContext, useEffect, useState } from "react";
 import { ScrollView, Switch, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { ThemeContext, ThemesEnum } from "../../context/ThemeContext";
+import { SettingsContext, ThemesEnum } from "../../context/SettingsContext";
 import Repository from "../../lib/Repository";
 import { colorThemes } from "../colorThemes";
 import { getStyles } from "./styles";
 
-type SettingsType = {
-  theme: ThemesEnum;
-};
-
-const SETTINGS_KEY = "@SkyG0D::settings";
-
-const repository = new Repository();
-
 export const Settings: FC = () => {
-  const { theme, setTheme } = useContext(ThemeContext);
+  const { settings, setSettings } = useContext(SettingsContext);
 
-  const [loading, setLoading] = useState<boolean>(true);
-  const [settings, setSettings] = useState<SettingsType>({ theme });
   const [showFAQ, setShowFAQ] = useState<boolean>(false);
 
-  useEffect(() => {
-    async function persistSettings() {
-      await repository.save(SETTINGS_KEY, settings);
-    }
-
-    if (!loading) {
-      persistSettings();
-    }
-  }, [settings]);
-
-  useEffect(() => {
-    async function loadSettings() {
-      const settings = await repository.get(SETTINGS_KEY);
-
-      if (settings) {
-        setTheme(settings.theme);
-        setSettings(settings);
-      }
-
-      setLoading(false);
-    }
-
-    loadSettings();
-  }, [setTheme]);
-
-  const styles = getStyles(theme);
-  const colorTheme = colorThemes[theme];
+  const styles = getStyles(settings.theme);
+  const colorTheme = colorThemes[settings.theme];
 
   function toggleShowFAQ() {
     setShowFAQ(!showFAQ);
@@ -56,8 +21,7 @@ export const Settings: FC = () => {
   function switchTheme(value: boolean) {
     const theme = value ? "dark" : "light";
 
-    setTheme(theme);
-    setSettings({ ...settings, theme });
+    setSettings({ theme });
   }
 
   return (

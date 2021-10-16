@@ -5,7 +5,7 @@ import { StatusBar } from "expo-status-bar";
 import React, { FC, useContext } from "react";
 import { SafeAreaView } from "react-native";
 import { TodosList } from "../../components/TodosList";
-import { ThemeContext } from "../../context/ThemeContext";
+import { SettingsContext } from "../../context/SettingsContext";
 import { TodoContext } from "../../context/TodoContext";
 import { NewTodo } from "../../components/NewTodo";
 import { getStyles } from "./styles";
@@ -21,7 +21,7 @@ type ShowTodosProps = {
 };
 
 export const ShowTodos: FC<ShowTodosProps> = () => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(SettingsContext).settings;
   const { todos, setTodos } = useContext(TodoContext);
 
   const styles = getStyles(theme);

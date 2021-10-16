@@ -1,6 +1,6 @@
 import { RouteProp } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
-import { ThemesEnum } from "../context/ThemeContext";
+import { ThemesEnum } from "../context/SettingsContext";
 
 type TodoType = {
   id: string;

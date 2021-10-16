@@ -1,6 +1,6 @@
 import { StyleSheet } from "react-native";
 
-import { ThemesEnum } from "../context/ThemeContext";
+import { ThemesEnum } from "../context/SettingsContext";
 
 import { colorThemes } from "./colorThemes";
 

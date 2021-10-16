@@ -21,10 +21,10 @@ export default class Repository {
     }
   }
 
-  async get(key: string) {
+  async get<T>(key: string) {
     try {
       const value = await AsyncStorage.getItem(key);
-      return value ? JSON.parse(value) : null;
+      return value ? JSON.parse(value) as T : null;
     } catch (err) {
       console.error(err);
 

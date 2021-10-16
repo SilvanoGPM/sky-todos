@@ -8,7 +8,7 @@ import React, {
 
 import { ActivityIndicator, StyleSheet, View } from "react-native";
 
-import { ThemeContext } from "./ThemeContext";
+import { SettingsContext } from "./SettingsContext";
 
 import Repository from "../lib/Repository";
 
@@ -32,7 +32,7 @@ const TODOS_KEY = "@SkyG0D::todos";
 const repository = new Repository();
 
 export const TodoProvider: FC = ({ children }) => {
-  const { theme } = useContext(ThemeContext);
+  const { theme } = useContext(SettingsContext).settings;
 
   const [loading, setLoading] = useState<boolean>(true);
   const [todos, setTodos] = useState<TodoType[]>([]);
@@ -54,7 +54,7 @@ export const TodoProvider: FC = ({ children }) => {
   }, []);
 
   async function loadTodos() {
-    const todos = await repository.get(TODOS_KEY);
+    const todos = await repository.get<TodoType[]>(TODOS_KEY);
 
     if (todos) {
       setTodos(todos);
@@ -65,7 +65,12 @@ export const TodoProvider: FC = ({ children }) => {
 
   if (loading) {
     return (
-      <View style={styles.container}>
+      <View
+        style={[
+          styles.container,
+          { backgroundColor: colorTheme.backgroundColor },
+        ]}
+      >
         <ActivityIndicator color={colorTheme.neutralInverted} size="large" />
       </View>
     );

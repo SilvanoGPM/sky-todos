@@ -3,7 +3,7 @@ import { View, TextInput, TouchableOpacity } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { v4 as uuid } from "uuid";
 
-import { ThemesEnum } from "../../context/ThemeContext";
+import { ThemesEnum } from "../../context/SettingsContext";
 
 import { validateTodoTitle } from "../../utils/validateTodoTitle";
 
