@@ -8,7 +8,14 @@ export function getStyles(theme: ThemesEnum) {
   const colorTheme = colorThemes[theme];
 
   return StyleSheet.create({
+    container: {
+      flex: 1,
+      alignItems: "center",
+      backgroundColor: colorTheme.modal.container,
+    },
+
     modal: {
+      width: "90%",
       backgroundColor: colorTheme.modal.backgroundColor,
       margin: 20,
       padding: 20,
@@ -64,7 +71,6 @@ export function getStyles(theme: ThemesEnum) {
     },
 
     modal__save__container: {
-      width: "100%",
       justifyContent: "center",
       alignItems: "center",
       marginTop: 20,

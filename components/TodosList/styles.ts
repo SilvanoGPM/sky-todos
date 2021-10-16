@@ -10,6 +10,7 @@ export function getStyles(theme: ThemesEnum) {
   return StyleSheet.create({
     todos: {
       marginVertical: 16,
+      paddingBottom: 16,
     },
 
     todos__empty: {

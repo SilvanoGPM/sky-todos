@@ -5,12 +5,18 @@ export const colorThemes = {
     backgroundColor: "#ffffff",
 
     header: {
-      textColor: "#fdcb6e",
+      textColor: "#2d3436",
+      background: "#ffffff",
+    },
+
+    tabBar: {
+      background: "#ffffff",
+      color: "#2d3436",
+      activeColor: "#12CBC4",
     },
 
     newTodo: {
       inputColor: "#16a085",
-      iconBackground: "#16a085",
       iconColor: "#ffffff",
     },
 
@@ -28,6 +34,7 @@ export const colorThemes = {
     },
 
     modal: {
+      container: "#ffffff",
       textColor: "#000000",
       backgroundColor: "#ffffff",
       closeColor: "#d63031",
@@ -43,8 +50,8 @@ export const colorThemes = {
       color: "#000000",
       thumbColor: "#d63031",
       trackColor: {
-        true: '#ff7675',
-        false: '#ff7675',
+        true: "#ff7675",
+        false: "#ff7675",
       },
     },
 
@@ -58,15 +65,22 @@ export const colorThemes = {
   dark: {
     neutral: "#000000",
     neutralInverted: "#ffffff",
-    backgroundColor: "#485460",
+
+    backgroundColor: "#2d3436",
 
     header: {
-      textColor: "#fdcb6e",
+      textColor: "#ffffff",
+      background: "#2d3436",
+    },
+
+    tabBar: {
+      background: "#2d3436",
+      color: "#ffffff",
+      activeColor: "#a29bfe",
     },
 
     newTodo: {
-      inputColor: "#16a085",
-      iconBackground: "#16a085",
+      inputColor: "#00cec9",
       iconColor: "#ffffff",
     },
 
@@ -84,8 +98,9 @@ export const colorThemes = {
     },
 
     modal: {
+      container: "#2D3436",
       textColor: "#ffffff",
-      backgroundColor: "#808e9b",
+      backgroundColor: "#636e72",
       closeColor: "#d63031",
       saveBackgroundColor: "#16a085",
       saveColor: "#ffffff",
@@ -95,18 +110,18 @@ export const colorThemes = {
     configurations: {
       iconColor: "#ffffff",
       closeIcon: "#d63031",
-      background: "#485460",
+      background: "#2D3436",
       color: "#ffffff",
       thumbColor: "#27ae60",
       trackColor: {
-        true: '#2ecc71',
-        false: '#2ecc71',
+        true: "#2ecc71",
+        false: "#2ecc71",
       },
     },
 
     filter: {
       iconColor: "#ffffff",
-      inputColor: "#3498db",
+      inputColor: "#6c5ce7",
       closeIconColor: "red",
     },
   },

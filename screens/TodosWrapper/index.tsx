@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useContext } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 import Icon5 from "react-native-vector-icons/FontAwesome5";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
@@ -8,12 +8,31 @@ import { Settings } from "../Settings";
 import { FilterTodos } from "../FilterTodos";
 import { Text } from "react-native";
 
+import { getStyles } from "../styles";
+import { colorThemes } from "../colorThemes";
+import { ThemeContext } from "../../context/ThemeContext";
+
 const Tab = createBottomTabNavigator();
 
-export const TodosWrapper: FC = () => {
+export function TodosWrapper() {
+  const { theme } = useContext(ThemeContext);
+
+  const styles = getStyles(theme);
+  const colorTheme = colorThemes[theme];
+
   return (
     <>
-      <Tab.Navigator initialRouteName="TodosList">
+      <Tab.Navigator
+        initialRouteName="TodosList"
+        screenOptions={{
+          headerStyle: styles.header,
+          headerTintColor: colorTheme.header.textColor,
+          headerTitleAlign: "center",
+          tabBarStyle: styles.tabs,
+          tabBarActiveTintColor: colorTheme.tabBar.activeColor,
+          tabBarInactiveTintColor: colorTheme.tabBar.color,
+        }}
+      >
         <Tab.Screen
           name="TodosList"
           component={ShowTodos}
@@ -45,4 +64,4 @@ export const TodosWrapper: FC = () => {
       </Tab.Navigator>
     </>
   );
-};
+}

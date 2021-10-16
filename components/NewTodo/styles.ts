@@ -26,7 +26,7 @@ export function getStyles(theme: ThemesEnum) {
     },
 
     newTodo__icon: {
-      backgroundColor: colorTheme.newTodo.iconBackground,
+      backgroundColor: colorTheme.newTodo.inputColor,
       padding: 8,
       borderTopRightRadius: 4,
       borderBottomRightRadius: 4,

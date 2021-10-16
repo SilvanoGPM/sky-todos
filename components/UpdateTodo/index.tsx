@@ -53,31 +53,33 @@ export const UpdateTodo: FC<TodoListRouteStackParamList<"UpdateTodo">> = ({
   }
 
   return (
-    <View style={styles.modal}>
-      <Text style={styles.modal__id}>Id: {selectedTodo.id}</Text>
+    <View style={styles.container}>
+      <View style={styles.modal}>
+        <Text style={styles.modal__id}>Id: {selectedTodo.id}</Text>
 
-      <View style={styles.modal__title__container}>
-        <Text style={styles.modal__title}>Título:</Text>
-        <TextInput
-          style={styles.modal__title__input}
-          value={todoToUpdate}
-          onChangeText={setTodoToUpdate}
-        />
-        <Text style={styles.modal__title__warn}>
-          Caso você altere o valor do título, e clique em salvar, o valor será
-          atualizado.
+        <View style={styles.modal__title__container}>
+          <Text style={styles.modal__title}>Título:</Text>
+          <TextInput
+            style={styles.modal__title__input}
+            value={todoToUpdate}
+            onChangeText={setTodoToUpdate}
+          />
+          <Text style={styles.modal__title__warn}>
+            Caso você altere o valor do título, e clique em salvar, o valor será
+            atualizado.
+          </Text>
+        </View>
+
+        <Text style={styles.modal__finished}>
+          A fazer {selectedTodo.finished ? "" : "não "}foi finalizado!
         </Text>
-      </View>
 
-      <Text style={styles.modal__finished}>
-        A fazer {selectedTodo.finished ? "" : "não "}foi finalizado!
-      </Text>
-
-      <View style={styles.modal__save__container}>
-        <TouchableOpacity style={styles.modal__save} onPress={updateTodo}>
-          <Text style={styles.modal__save__text}>Salvar</Text>
-          <Icon name="save" size={20} color={colorTheme.modal.saveColor} />
-        </TouchableOpacity>
+        <View style={styles.modal__save__container}>
+          <TouchableOpacity style={styles.modal__save} onPress={updateTodo}>
+            <Text style={styles.modal__save__text}>Salvar</Text>
+            <Icon name="save" size={20} color={colorTheme.modal.saveColor} />
+          </TouchableOpacity>
+        </View>
       </View>
     </View>
   );
