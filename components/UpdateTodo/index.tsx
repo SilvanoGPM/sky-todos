@@ -8,8 +8,7 @@ import { colorThemes } from "../../screens/colorThemes";
 import { TodoListRouteStackParamList } from "../../types/navigation-types";
 import { validateTodoTitle } from "../../utils/validateTodoTitle";
 import { getStyles } from "./styles";
-
-const TOAST_VISIBILITY_TIME = 1000;
+import { TOAST_VISIBILITY_TIME } from "../../globals";
 
 export const UpdateTodo: FC<TodoListRouteStackParamList<"UpdateTodo">> = ({
   navigation,
@@ -44,7 +43,7 @@ export const UpdateTodo: FC<TodoListRouteStackParamList<"UpdateTodo">> = ({
       Toast.show({
         type: "success",
         text1: "TODO foi atualizado!",
-        visibilityTime: TOAST_VISIBILITY_TIME,
+        visibilityTime: TOAST_VISIBILITY_TIME.short,
         position: "bottom",
       });
 

@@ -1,7 +1,7 @@
 import Toast from "react-native-toast-message";
+import { TOAST_VISIBILITY_TIME } from "../globals";
 
 export const MAX_CHARS_TODO = 200;
-export const TOAST_VISIBILITY_TIME = 1000;
 
 export function validateTodoTitle(todoTitle: string) {
   const clearedTodoTitle = todoTitle.trim();
@@ -13,7 +13,7 @@ export function validateTodoTitle(todoTitle: string) {
       type: "error",
       text1: message,
       position: "bottom",
-      visibilityTime: TOAST_VISIBILITY_TIME,
+      visibilityTime: TOAST_VISIBILITY_TIME.short,
     });
 
     return null;
@@ -26,7 +26,7 @@ export function validateTodoTitle(todoTitle: string) {
       type: "error",
       text1: "O ToDo precisa ter pelo menos 3 caracteres...",
       position: "bottom",
-      visibilityTime: TOAST_VISIBILITY_TIME,
+      visibilityTime: TOAST_VISIBILITY_TIME.short,
     });
 
     return null;

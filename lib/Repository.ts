@@ -1,7 +1,6 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Toast from "react-native-toast-message";
-
-const TOAST_VISIBILITY_TIME = 1000;
+import { TOAST_VISIBILITY_TIME } from "../globals";
 
 export default class Repository {
   async save(key: string, value: Object) {
@@ -15,7 +14,7 @@ export default class Repository {
       Toast.show({
         type: "error",
         text1: "Aconteceu um erro ao salvar determinado valor...",
-        visibilityTime: TOAST_VISIBILITY_TIME,
+        visibilityTime: TOAST_VISIBILITY_TIME.short,
         position: "bottom",
       });
     }
@@ -31,7 +30,7 @@ export default class Repository {
       Toast.show({
         type: "error",
         text1: "Aconteceu um erro ao tentar carregar determinado valor...",
-        visibilityTime: TOAST_VISIBILITY_TIME,
+        visibilityTime: TOAST_VISIBILITY_TIME.short,
         position: "bottom",
       });
     }

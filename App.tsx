@@ -6,7 +6,6 @@ import { SettingsProvider } from "./context/SettingsContext";
 import { TodoProvider } from "./context/TodoContext";
 import { Screens } from "./screens";
 
-
 export default function App() {
   return (
     <NavigationContainer>

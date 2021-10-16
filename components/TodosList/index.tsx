@@ -1,10 +1,11 @@
-import { CompositeNavigationProp, useNavigation } from "@react-navigation/core";
+import { useNavigation } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import React, { FC } from "react";
 import { Alert, FlatList, Text, TouchableOpacity, View } from "react-native";
 import Toast from "react-native-toast-message";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { ThemesEnum } from "../../context/SettingsContext";
+import { TOAST_VISIBILITY_TIME } from "../../globals";
 import { colorThemes } from "../../screens/colorThemes";
 import { TodoListRouteParamList } from "../../types/navigation-types";
 import { getStyles } from "./styles";
@@ -26,8 +27,6 @@ type TodosListProps = {
   theme: ThemesEnum;
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
 };
-
-const TOAST_VISIBILITY_TIME = 1000;
 
 type TodoListNavigationProp = StackNavigationProp<
   TodoListRouteParamList,
@@ -61,7 +60,7 @@ export const TodosList: FC<TodosListProps> = ({
       Toast.show({
         type: "success",
         text1: "TODO foi removido!",
-        visibilityTime: TOAST_VISIBILITY_TIME,
+        visibilityTime: TOAST_VISIBILITY_TIME.short,
         position: "bottom",
       });
     }
@@ -132,7 +131,7 @@ export const TodosList: FC<TodosListProps> = ({
           data={todos}
           keyExtractor={({ id }) => id}
           renderItem={renderItem}
-          contentContainerStyle={{ overflow: 'scroll' }}
+          contentContainerStyle={{ overflow: "scroll" }}
         />
       )}
     </View>
