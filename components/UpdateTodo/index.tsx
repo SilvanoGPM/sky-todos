@@ -9,6 +9,7 @@ import { TodoListRouteStackParamList } from "../../types/navigation-types";
 import { validateTodoTitle } from "../../utils/validateTodoTitle";
 import { getStyles } from "./styles";
 import { TOAST_VISIBILITY_TIME } from "../../globals";
+import { formatDisplayDate } from "../../utils/formatDisplayDate";
 
 export const UpdateTodo: FC<TodoListRouteStackParamList<"UpdateTodo">> = ({
   navigation,
@@ -35,7 +36,9 @@ export const UpdateTodo: FC<TodoListRouteStackParamList<"UpdateTodo">> = ({
 
     if (validTodo) {
       const newTodos = todos.map((todo) =>
-        todo.id === selectedTodo.id ? { ...todo, title: validTodo } : todo
+        todo.id === selectedTodo.id
+          ? { ...todo, title: validTodo, updatedDate: Date.now() }
+          : todo
       );
 
       setTodos(newTodos);
@@ -70,7 +73,15 @@ export const UpdateTodo: FC<TodoListRouteStackParamList<"UpdateTodo">> = ({
         </View>
 
         <Text style={styles.modal__finished}>
-          A fazer {selectedTodo.finished ? "" : "não "}foi finalizado!
+          {selectedTodo.finished && selectedTodo.finishedDate
+            ? `TODO Finalizado em: \n${formatDisplayDate(selectedTodo.finishedDate)}`
+            : "TODO não foi finalizado!"}
+        </Text>
+
+        <Text style={styles.modal__finished}>
+          {selectedTodo.updatedDate
+            ? `TODO Atualizado em: \n${formatDisplayDate(selectedTodo.updatedDate)}`
+            : "TODO não foi atualizado!"}
         </Text>
 
         <View style={styles.modal__save__container}>

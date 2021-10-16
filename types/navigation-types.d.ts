@@ -1,12 +1,7 @@
 import { RouteProp } from "@react-navigation/core";
 import { StackNavigationProp } from "@react-navigation/stack";
 import { ThemesEnum } from "../context/SettingsContext";
-
-type TodoType = {
-  id: string;
-  title: string;
-  finished: boolean;
-};
+import { TodoType } from "../types/types";
 
 export type TodoListRouteParamList = {
   ListTodo: {

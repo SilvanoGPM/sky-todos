@@ -9,12 +9,7 @@ import { TOAST_VISIBILITY_TIME } from "../../globals";
 import { colorThemes } from "../../screens/colorThemes";
 import { TodoListRouteParamList } from "../../types/navigation-types";
 import { getStyles } from "./styles";
-
-type TodoType = {
-  id: string;
-  title: string;
-  finished: boolean;
-};
+import { TodoType } from "../../types/types";
 
 type TodoRenderItem = {
   item: TodoType;
@@ -76,7 +71,9 @@ export const TodosList: FC<TodosListProps> = ({
   function switchTodo(id: string) {
     return () => {
       const newTodos = todos.map((todo) =>
-        todo.id === id ? { ...todo, finished: !todo.finished } : todo
+        todo.id === id
+          ? { ...todo, finished: !todo.finished, finishedDate: Date.now() }
+          : todo
       );
 
       setTodos(newTodos);

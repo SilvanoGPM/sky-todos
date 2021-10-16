@@ -9,12 +9,7 @@ import { SettingsContext } from "../../context/SettingsContext";
 import { TodoContext } from "../../context/TodoContext";
 import { NewTodo } from "../../components/NewTodo";
 import { getStyles } from "./styles";
-
-type TodoType = {
-  id: string;
-  title: string;
-  finished: boolean;
-};
+import { TodoType } from "../../types/types";
 
 type ShowTodosProps = {
   navigation: NavigationProp<{}>;
@@ -25,12 +20,9 @@ export const ShowTodos: FC<ShowTodosProps> = () => {
   const { todos, setTodos } = useContext(TodoContext);
 
   const styles = getStyles(theme);
-  const statusBarTheme = theme === "dark" ? "light" : "dark";
 
   return (
     <SafeAreaView style={styles.container}>
-      <StatusBar animated style={statusBarTheme} />
-
       <NewTodo theme={theme} setTodos={setTodos} />
 
       <TodosList

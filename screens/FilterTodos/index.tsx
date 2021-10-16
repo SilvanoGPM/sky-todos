@@ -6,12 +6,7 @@ import { SettingsContext } from "../../context/SettingsContext";
 import { TodoContext } from "../../context/TodoContext";
 import { colorThemes } from "../colorThemes";
 import { getStyles } from "./styles";
-
-type TodoType = {
-  id: string;
-  title: string;
-  finished: boolean;
-};
+import { TodoType } from "../../types/types";
 
 export function FilterTodos() {
   const { theme } = useContext(SettingsContext).settings;

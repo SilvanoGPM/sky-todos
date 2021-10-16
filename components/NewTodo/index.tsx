@@ -9,12 +9,7 @@ import { validateTodoTitle } from "../../utils/validateTodoTitle";
 
 import { colorThemes } from "../../screens/colorThemes";
 import { getStyles } from "./styles";
-
-type TodoType = {
-  id: string;
-  title: string;
-  finished: boolean;
-};
+import { TodoType } from "../../types/types";
 
 type NewTodoProps = {
   theme: ThemesEnum;

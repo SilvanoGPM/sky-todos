@@ -1,3 +1,4 @@
+import { StatusBar, StatusBarStyle } from "expo-status-bar";
 import React, { createContext, FC, useState, useEffect } from "react";
 import { ActivityIndicator, Appearance, StyleSheet, View } from "react-native";
 import Repository from "../lib/Repository";
@@ -79,14 +80,18 @@ export const SettingsProvider: FC<SettingsContextProps> = ({ children }) => {
   }
 
   return (
-    <SettingsContext.Provider
-      value={{
-        settings,
-        setSettings,
-      }}
-    >
-      {children}
-    </SettingsContext.Provider>
+    <>
+      <StatusBar style={colorTheme.statusBar as StatusBarStyle} />
+
+      <SettingsContext.Provider
+        value={{
+          settings,
+          setSettings,
+        }}
+      >
+        {children}
+      </SettingsContext.Provider>
+    </>
   );
 };
 

@@ -1,5 +1,7 @@
 export const colorThemes = {
   light: {
+    statusBar: "dark",
+
     neutral: "#ffffff",
     neutralInverted: "#000000",
     backgroundColor: "#ffffff",
@@ -71,6 +73,8 @@ export const colorThemes = {
   },
 
   dark: {
+    statusBar: "light",
+
     neutral: "#000000",
     neutralInverted: "#ffffff",
 
@@ -142,6 +146,8 @@ export const colorThemes = {
   },
 
   dracula: {
+    statusBar: "light",
+
     neutral: "#000000",
     neutralInverted: "#ffffff",
 
