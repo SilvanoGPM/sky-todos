@@ -40,7 +40,33 @@ export function getStyles(theme: ThemesEnum) {
       marginLeft: 10,
     },
 
+    settings__shareContainer: {
+      marginTop: 16,
+      alignItems: "center",
+    },
+
+    settings__shareBtn: {
+      marginTop: 16,
+      padding: 16,
+      backgroundColor: colorTheme.configurations.shareBtnBackground,
+      flexDirection: "row",
+      justifyContent: "center",
+      alignItems: "center",
+      width: 60,
+      height: 60,
+      borderRadius: 30,
+    },
+
+    settings__shareText: {
+      color: colorTheme.configurations.shareBtnColor,
+      marginLeft: 16,
+      fontSize: 30,
+    },
+
     settings__center: {
+      paddingTop: 16,
+      borderTopWidth: 1,
+      borderTopColor: colorTheme.configurations.color,
       alignItems: "center",
       width: "100%",
     },

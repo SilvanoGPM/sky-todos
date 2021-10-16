@@ -13,10 +13,11 @@ export function getStyles(theme: ThemesEnum) {
       borderWidth: 1,
     },
 
-    themeSelect: {
+    exportSelect: {
       flex: 1,
       color: colorTheme.themeSelect.color,
     },
+
   });
 }
 

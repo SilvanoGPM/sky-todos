@@ -1,16 +1,23 @@
 import React, { FC, useContext, useState } from "react";
-import { ScrollView, Text, View, TouchableOpacity } from "react-native";
+import Icon from "react-native-vector-icons/FontAwesome";
+import { ScrollView, Text, View, TouchableOpacity, Share } from "react-native";
 
 import { SettingsContext, ThemesEnum } from "../../context/SettingsContext";
+import { TodoContext } from "../../context/TodoContext";
 import { ThemeSelect } from "./components/ThemeSelect";
+import { ExportSelect } from "./components/ExportSelect";
+
+import { getMessageTodoByFormat } from "../../utils/getMessageTodoByFormat";
 
 import { getStyles } from "./styles";
 import { colorThemes } from "../../colorTheme";
 
 export const Settings: FC = () => {
   const { settings, setSettings } = useContext(SettingsContext);
+  const { todos } = useContext(TodoContext);
 
   const [showFAQ, setShowFAQ] = useState<boolean>(false);
+  const [exportFormat, setExportFormat] = useState<"plain" | "json">("plain");
 
   const styles = getStyles(settings.theme);
   const colorTheme = colorThemes[settings.theme];
@@ -23,6 +30,14 @@ export const Settings: FC = () => {
     setSettings({ ...settings, theme: value });
   }
 
+  async function shareExportType() {
+    const message = getMessageTodoByFormat(todos, exportFormat);
+
+    await Share.share({
+      message,
+    });
+  }
+
   return (
     <View>
       <ScrollView style={styles.container}>
@@ -32,6 +47,17 @@ export const Settings: FC = () => {
               theme={settings.theme}
               handleChangeValue={switchTheme}
             />
+          </View>
+
+          <View style={styles.settings__shareContainer}>
+            <ExportSelect
+              theme={settings.theme}
+              selectedFormat={exportFormat}
+              handleChangeValue={setExportFormat}
+            />
+            <TouchableOpacity onPress={shareExportType} style={styles.settings__shareBtn}>
+              <Icon name="share" size={20} color={colorTheme.configurations.shareBtnColor} />
+            </TouchableOpacity>
           </View>
         </View>
 

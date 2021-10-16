@@ -57,6 +57,8 @@ export default {
     },
     showFAQ: "#8be9fd",
     showFAQColor: "#f8f8f2",
+    shareBtnBackground: "#6272a4",
+    shareBtnColor: "#f8f8f2",
   },
 
   filter: {

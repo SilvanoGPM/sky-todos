@@ -7,13 +7,17 @@ import { ThemesEnum } from "../../../../context/SettingsContext";
 import { getStyles } from "./styles";
 import { colorThemes } from "../../../../colorTheme";
 
-type ThemeSelectProps = {
+type ExportTypeEnum = "plain"|"json";
+
+type ExportSelectProps = {
+  selectedFormat: ExportTypeEnum;
   theme: ThemesEnum;
-  handleChangeValue: (value: ThemesEnum) => void;
+  handleChangeValue: (value: ExportTypeEnum) => void;
 };
 
-export const ThemeSelect: FC<ThemeSelectProps> = ({
+export const ExportSelect: FC<ExportSelectProps> = ({
   theme,
+  selectedFormat,
   handleChangeValue,
 }) => {
   const styles = getStyles(theme);
@@ -22,14 +26,13 @@ export const ThemeSelect: FC<ThemeSelectProps> = ({
   return (
     <View style={styles.container}>
       <Picker
+        style={styles.exportSelect}
         dropdownIconColor={colorTheme.themeSelect.color}
-        style={styles.themeSelect}
-        selectedValue={theme}
+        selectedValue={selectedFormat}
         onValueChange={handleChangeValue}
       >
-        <Picker.Item label="Claro" value="light" />
-        <Picker.Item label="Escuro" value="dark" />
-        <Picker.Item label="Dracula" value="dracula" />
+        <Picker.Item label="Texto" value="plain" />
+        <Picker.Item label="JSON" value="json" />
       </Picker>
     </View>
   );
