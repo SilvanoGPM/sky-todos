@@ -1,4 +1,4 @@
-import React, { FC, useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Text, TextInput, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import { TodosList } from "../../components/TodosList";
@@ -13,12 +13,13 @@ type TodoType = {
   finished: boolean;
 };
 
-export const FilterTodos: FC = () => {
+export function FilterTodos() {
   const { theme } = useContext(ThemeContext);
   const { todos: originalTodos } = useContext(TodoContext);
 
   const [todosToFilter, setTodosToFilter] = useState<string>("");
   const [todos, setTodos] = useState<TodoType[]>(originalTodos);
+  const [filtering, setFiltering] = useState<boolean>(false);
 
   useEffect(() => {
     setTodos(originalTodos);
@@ -29,6 +30,7 @@ export const FilterTodos: FC = () => {
 
   function resetTodos() {
     setTodosToFilter("");
+    setFiltering(false);
     setTodos(originalTodos);
   }
 
@@ -40,26 +42,30 @@ export const FilterTodos: FC = () => {
         title.toLocaleLowerCase().includes(clearedTodosToFilter)
       );
 
+      setFiltering(true);
       setTodos(newTodos);
     }
   }
+
   return (
     <View style={styles.container}>
-      <View style={styles.filter}>
-        <TextInput
-          value={todosToFilter}
-          onChangeText={setTodosToFilter}
-          style={styles.filter__input}
-          placeholder="Pesquisar por TODOs"
-          placeholderTextColor={colorTheme.filter.inputColor}
-        />
+      {!filtering && (
+        <View style={styles.filter}>
+          <TextInput
+            value={todosToFilter}
+            onChangeText={setTodosToFilter}
+            style={styles.filter__input}
+            placeholder="Pesquisar por TODOs"
+            placeholderTextColor={colorTheme.filter.inputColor}
+          />
 
-        <TouchableOpacity style={styles.filter__send} onPress={filterTodos}>
-          <Icon name="search" size={20} color={colorTheme.filter.iconColor} />
-        </TouchableOpacity>
-      </View>
+          <TouchableOpacity style={styles.filter__send} onPress={filterTodos}>
+            <Icon name="search" size={20} color={colorTheme.filter.iconColor} />
+          </TouchableOpacity>
+        </View>
+      )}
 
-      {todos.length !== originalTodos.length && (
+      {filtering && (
         <>
           <TouchableOpacity style={styles.filter__close} onPress={resetTodos}>
             <Text>
@@ -71,9 +77,16 @@ export const FilterTodos: FC = () => {
             </Text>
           </TouchableOpacity>
 
-          <View>
-            <Text>Pesquisando por: {todosToFilter}</Text>
-          </View>
+          {todos.length > 0 && (
+            <View>
+              <Text style={styles.filter__search__text}>
+                Pesquisando por: "{todosToFilter}"
+              </Text>
+              <Text style={styles.filter__results}>
+                {todos.length} resultados encontrados...
+              </Text>
+            </View>
+          )}
         </>
       )}
 
@@ -85,4 +98,4 @@ export const FilterTodos: FC = () => {
       />
     </View>
   );
-};
+}

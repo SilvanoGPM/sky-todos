@@ -48,6 +48,16 @@ export function getStyles(theme: ThemesEnum) {
       alignItems: "center",
       justifyContent: "center",
     },
+
+    filter__search__text: {
+      fontSize: 20,
+      color: colorTheme.filter.searchColor,
+    },
+
+    filter__results: {
+      fontSize: 14,
+      color: colorTheme.filter.searchColor,
+    },
   });
 }
 

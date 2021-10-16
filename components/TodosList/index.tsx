@@ -132,6 +132,7 @@ export const TodosList: FC<TodosListProps> = ({
           data={todos}
           keyExtractor={({ id }) => id}
           renderItem={renderItem}
+          contentContainerStyle={{ overflow: 'scroll' }}
         />
       )}
     </View>

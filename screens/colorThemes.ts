@@ -59,6 +59,7 @@ export const colorThemes = {
       iconColor: "#ffffff",
       inputColor: "#3498db",
       closeIconColor: "red",
+      searchColor: "#2d3436",
     },
   },
 
@@ -123,6 +124,7 @@ export const colorThemes = {
       iconColor: "#ffffff",
       inputColor: "#6c5ce7",
       closeIconColor: "red",
+      searchColor: "#ffffff",
     },
   },
 };
