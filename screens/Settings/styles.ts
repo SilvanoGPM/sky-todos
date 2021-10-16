@@ -1,8 +1,8 @@
 import { StyleSheet } from "react-native";
-
 import { ThemesEnum } from "../../context/SettingsContext";
-
 import { colorThemes } from "../colorThemes";
+
+
 
 export function getStyles(theme: ThemesEnum) {
   const colorTheme = colorThemes[theme];
@@ -42,7 +42,7 @@ export function getStyles(theme: ThemesEnum) {
 
     settings__center: {
       alignItems: "center",
-      width: '100%',
+      width: "100%",
     },
 
     settings__showFAQ: {
@@ -57,6 +57,7 @@ export function getStyles(theme: ThemesEnum) {
 
     settings__faq: {
       paddingHorizontal: 16,
+      marginTop: 4,
     },
 
     settings__faq__title: {

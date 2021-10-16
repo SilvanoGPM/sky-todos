@@ -1,9 +1,9 @@
 import React, { createContext, FC, useState, useEffect } from "react";
-import { ActivityIndicator, StyleSheet, View } from "react-native";
+import { ActivityIndicator, Appearance, StyleSheet, View } from "react-native";
 import Repository from "../lib/Repository";
 import { colorThemes } from "../screens/colorThemes";
 
-export type ThemesEnum = "light" | "dark";
+export type ThemesEnum = "light" | "dark" | "dracula";
 
 type SettingsType = {
   theme: ThemesEnum;
@@ -22,7 +22,7 @@ type ContextType = {
 
 const INITIAL_VALUE: ContextType = {
   settings: {
-    theme: "light",
+    theme: Appearance.getColorScheme() || "light",
   },
   setSettings: () => {},
 };

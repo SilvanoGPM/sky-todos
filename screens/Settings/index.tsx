@@ -1,9 +1,9 @@
-import React, { FC, useContext, useEffect, useState } from "react";
+import React, { FC, useContext, useState } from "react";
 import { ScrollView, Switch, Text, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 import { SettingsContext, ThemesEnum } from "../../context/SettingsContext";
-import Repository from "../../lib/Repository";
 import { colorThemes } from "../colorThemes";
+import { ThemeSelect } from "./components/ThemeSelect";
 import { getStyles } from "./styles";
 
 export const Settings: FC = () => {
@@ -18,10 +18,8 @@ export const Settings: FC = () => {
     setShowFAQ(!showFAQ);
   }
 
-  function switchTheme(value: boolean) {
-    const theme = value ? "dark" : "light";
-
-    setSettings({ theme });
+  function switchTheme(value: ThemesEnum) {
+    setSettings({ ...settings, theme: value });
   }
 
   return (
@@ -29,13 +27,9 @@ export const Settings: FC = () => {
       <ScrollView style={styles.container}>
         <View style={styles.settings__switches}>
           <View style={styles.settings__switch__wrapper}>
-            <Text style={styles.settings__switch__text}>Tema escuro?</Text>
-            <Switch
-              thumbColor={colorTheme.configurations.thumbColor}
-              trackColor={colorTheme.configurations.trackColor}
-              style={styles.settings__switch}
-              value={settings.theme === "dark"}
-              onValueChange={switchTheme}
+            <ThemeSelect
+              theme={settings.theme}
+              handleChangeValue={switchTheme}
             />
           </View>
         </View>
