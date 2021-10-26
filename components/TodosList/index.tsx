@@ -24,6 +24,8 @@ type TodosListProps = {
   todos: TodoType[];
   theme: ThemesEnum;
   setTodos: React.Dispatch<React.SetStateAction<TodoType[]>>;
+  handleSwitchClick?: (id: string) => () => void;
+  handleRemoveClick?: (id: string) => () => void;
 };
 
 type TodoListNavigationProp = StackNavigationProp<
@@ -36,6 +38,8 @@ export const TodosList: FC<TodosListProps> = ({
   todos,
   theme,
   setTodos,
+  handleRemoveClick,
+  handleSwitchClick,
 }) => {
   const navigation = useNavigation<TodoListNavigationProp>();
 
@@ -83,6 +87,9 @@ export const TodosList: FC<TodosListProps> = ({
     };
   }
 
+  const removeTodoFn = handleRemoveClick || removeTodo;
+  const switchTodoFn = handleSwitchClick || switchTodo;
+
   function renderItem({ item }: TodoRenderItem) {
     const { id, title, finished } = item;
 
@@ -96,14 +103,14 @@ export const TodosList: FC<TodosListProps> = ({
           </Text>
 
           <View style={styles.list__actions}>
-            <TouchableOpacity onPress={removeTodo(id)}>
+            <TouchableOpacity onPress={removeTodoFn(id)}>
               <Icon
                 name="trash-o"
                 size={30}
                 color={colorTheme.todo.removeColor}
               />
             </TouchableOpacity>
-            <TouchableOpacity onPress={switchTodo(id)}>
+            <TouchableOpacity onPress={switchTodoFn(id)}>
               <Icon
                 name={finished ? "remove" : "check"}
                 size={30}

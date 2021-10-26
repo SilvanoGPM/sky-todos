@@ -1,6 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
-import { Text, TextInput, TouchableOpacity, View } from "react-native";
+import { Alert, Text, TextInput, TouchableOpacity, View } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Toast from "react-native-toast-message";
+
+import { TOAST_VISIBILITY_TIME } from "../../globals";
 
 import { TodoType } from "../../types/types";
 import { TodosList } from "../../components/TodosList";
@@ -12,18 +15,61 @@ import { getStyles } from "./styles";
 
 export function FilterTodos() {
   const { theme } = useContext(SettingsContext).settings;
-  const { todos: originalTodos } = useContext(TodoContext);
+  const { todos: originalTodos, setTodos: setOriginalTodos } =
+    useContext(TodoContext);
 
   const [todosToFilter, setTodosToFilter] = useState<string>("");
   const [todos, setTodos] = useState<TodoType[]>(originalTodos);
   const [filtering, setFiltering] = useState<boolean>(false);
 
   useEffect(() => {
-    setTodos(originalTodos);
+    if (!filtering) {
+      setTodos(originalTodos);
+      return;
+    }
+
+    const previousTodos = originalTodos.filter((todo) =>
+      todos.map(({ id }) => id).includes(todo.id)
+    );
+
+    setTodos(previousTodos);
   }, [originalTodos]);
 
   const styles = getStyles(theme);
   const colorTheme = colorThemes[theme];
+
+  function handleSwitchClick(id: string) {
+    return () => {
+      const newTodos = originalTodos.map((todo) =>
+        todo.id === id
+          ? { ...todo, finished: !todo.finished, finishedDate: Date.now() }
+          : todo
+      );
+
+      setOriginalTodos(newTodos);
+    };
+  }
+
+  function handleRemoveClick(id: string) {
+    function exec() {
+      const newTodos = originalTodos.filter((todo) => todo.id !== id);
+      setOriginalTodos(newTodos);
+
+      Toast.show({
+        type: "success",
+        text1: "TODO foi removido!",
+        visibilityTime: TOAST_VISIBILITY_TIME.short,
+        position: "bottom",
+      });
+    }
+
+    return () => {
+      Alert.alert("Excluir TODO", "Tem certeza que deseja excuir esse TODO?", [
+        { text: "Não" },
+        { text: "Sim", onPress: exec },
+      ]);
+    };
+  }
 
   function resetTodos() {
     setTodosToFilter("");
@@ -92,6 +138,8 @@ export function FilterTodos() {
         theme={theme}
         todos={todos}
         emptyTodosMessage="Nada encontrado..."
+        handleRemoveClick={handleRemoveClick}
+        handleSwitchClick={handleSwitchClick}
       />
     </View>
   );
