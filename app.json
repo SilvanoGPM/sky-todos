@@ -22,13 +22,13 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.github.SkyG0D.sky-todos",
-      "buildNumber": "1.0.0"
+      "buildNumber": "2.2.1"
     },
     "android": {
       "package": "com.github.SkyG0D.skytodos",
       "versionCode": 1,
       "adaptiveIcon": {
-        "foregroundImage": "./assets/img/icon.png",
+        "foregroundImage": "./assets/img/adaptativeIcon.png",
         "backgroundColor": "#FFFFFF"
       }
     },
