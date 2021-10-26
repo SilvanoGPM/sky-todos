@@ -5,7 +5,7 @@ export function getMessageTodoByFormat(
   format: "plain" | "json"
 ): string {
   const callbacks = {
-    plain: () => todos.map((todo) => `-${todo.title}`).join("\n"),
+    plain: () => todos.map((todo) => `  - ${todo.title}`).join("\n"),
     json: () => JSON.stringify(todos),
   };
 

@@ -1,7 +1,17 @@
 import React, { FC, useContext, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
+import Toast from "react-native-toast-message";
 
-import { ScrollView, Text, View, TouchableOpacity, Share, Alert } from "react-native";
+import {
+  ScrollView,
+  Text,
+  View,
+  TouchableOpacity,
+  Share,
+  Alert,
+} from "react-native";
+
+import { TOAST_VISIBILITY_TIME } from "../../globals";
 
 import { SettingsContext, ThemesEnum } from "../../context/SettingsContext";
 import { TodoContext } from "../../context/TodoContext";
@@ -29,10 +39,11 @@ export const Settings: FC = () => {
       setTodos([]);
     }
 
-    Alert.alert('Remover TODOs', 'Deseja remover os TODOs por completo? \n\nAntes de remover os TODOs, é aconselhado fazer um backup.', [
-      { text: 'Cancelar' },
-      { text: 'Remover TODOs', onPress: deleteTodos },
-    ]);
+    Alert.alert(
+      "Remover TODOs",
+      "Deseja remover os TODOs por completo? \n\nAntes de remover os TODOs, é aconselhado fazer um backup.",
+      [{ text: "Cancelar" }, { text: "Remover TODOs", onPress: deleteTodos }]
+    );
   }
 
   function toggleShowFAQ() {
@@ -44,11 +55,20 @@ export const Settings: FC = () => {
   }
 
   async function shareExportType() {
-    const message = getMessageTodoByFormat(todos, exportFormat);
+    if (todos.length > 0) {
+      const message = getMessageTodoByFormat(todos, exportFormat);
 
-    await Share.share({
-      message,
-    });
+      await Share.share({
+        message,
+      });
+    } else {
+      Toast.show({
+        type: "info",
+        text1: "Não existem TODOs para compartilhar.",
+        visibilityTime: TOAST_VISIBILITY_TIME.short,
+        position: "bottom",
+      });
+    }
   }
 
   return (
@@ -93,7 +113,6 @@ export const Settings: FC = () => {
               />
             </TouchableOpacity>
           </View>
-
         </View>
 
         <View style={styles.settings__center}>
