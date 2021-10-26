@@ -11,6 +11,7 @@ export function getStyles(theme: ThemesEnum) {
       height: 50,
       borderColor: colorTheme.themeSelect.color,
       borderWidth: 1,
+      marginTop: 16,
     },
 
     exportSelect: {

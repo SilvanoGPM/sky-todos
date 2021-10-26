@@ -59,6 +59,8 @@ export default {
     showFAQColor: "#ffffff",
     shareBtnBackground: "#00cec9",
     shareBtnColor: "#ffffff",
+    resetTodosColor: "#ffffff",
+    resetTodosBackground: "#d63031",
   },
 
   filter: {

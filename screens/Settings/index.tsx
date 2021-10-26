@@ -1,13 +1,7 @@
 import React, { FC, useContext, useState } from "react";
 import Icon from "react-native-vector-icons/FontAwesome";
 
-import {
-  ScrollView,
-  Text,
-  View,
-  TouchableOpacity,
-  Share,
-} from "react-native";
+import { ScrollView, Text, View, TouchableOpacity, Share, Alert } from "react-native";
 
 import { SettingsContext, ThemesEnum } from "../../context/SettingsContext";
 import { TodoContext } from "../../context/TodoContext";
@@ -22,13 +16,24 @@ import { ImportTodos } from "./components/ImportTodos";
 
 export const Settings: FC = () => {
   const { settings, setSettings } = useContext(SettingsContext);
-  const { todos } = useContext(TodoContext);
+  const { todos, setTodos } = useContext(TodoContext);
 
   const [showFAQ, setShowFAQ] = useState<boolean>(false);
   const [exportFormat, setExportFormat] = useState<"plain" | "json">("plain");
 
   const styles = getStyles(settings.theme);
   const colorTheme = colorThemes[settings.theme];
+
+  function resetTodos() {
+    function deleteTodos() {
+      setTodos([]);
+    }
+
+    Alert.alert('Remover TODOs', 'Deseja remover os TODOs por completo? \n\nAntes de remover os TODOs, é aconselhado fazer um backup.', [
+      { text: 'Cancelar' },
+      { text: 'Remover TODOs', onPress: deleteTodos },
+    ]);
+  }
 
   function toggleShowFAQ() {
     setShowFAQ(!showFAQ);
@@ -57,13 +62,15 @@ export const Settings: FC = () => {
             />
           </View>
 
-          <View style={styles.settings__shareContainer}>
-            <ExportSelect
-              theme={settings.theme}
-              selectedFormat={exportFormat}
-              handleChangeValue={setExportFormat}
-            />
+          <ImportTodos theme={settings.theme} />
 
+          <ExportSelect
+            theme={settings.theme}
+            selectedFormat={exportFormat}
+            handleChangeValue={setExportFormat}
+          />
+
+          <View style={styles.settings__actionsContainer}>
             <TouchableOpacity
               onPress={shareExportType}
               style={styles.settings__shareBtn}
@@ -74,9 +81,19 @@ export const Settings: FC = () => {
                 color={colorTheme.configurations.shareBtnColor}
               />
             </TouchableOpacity>
+
+            <TouchableOpacity
+              onPress={resetTodos}
+              style={styles.settings__resetBtn}
+            >
+              <Icon
+                name="remove"
+                size={20}
+                color={colorTheme.configurations.resetTodosColor}
+              />
+            </TouchableOpacity>
           </View>
 
-          <ImportTodos theme={settings.theme} />
         </View>
 
         <View style={styles.settings__center}>

@@ -40,13 +40,15 @@ export function getStyles(theme: ThemesEnum) {
       marginLeft: 10,
     },
 
-    settings__shareContainer: {
-      marginTop: 16,
+    settings__actionsContainer: {
       alignItems: "center",
+      justifyContent: "center",
+      flexDirection: "row",
     },
 
     settings__shareBtn: {
       marginTop: 16,
+      marginRight: 16,
       padding: 16,
       backgroundColor: colorTheme.configurations.shareBtnBackground,
       flexDirection: "row",
@@ -63,34 +65,20 @@ export function getStyles(theme: ThemesEnum) {
       fontSize: 30,
     },
 
-    settings__import: {
-      marginTop: 8,
+    settings__reset: {
+      alignItems: "center",
     },
 
-    settings__importContainer: {
-      borderWidth: 1,
-      borderColor: colorTheme.importTodo.color,
-      color: colorTheme.importTodo.color,
+    settings__resetBtn: {
+      backgroundColor: colorTheme.configurations.resetTodosBackground,
+      marginTop: 16,
+      padding: 16,
       flexDirection: "row",
-    },
-
-    settings__importText: {
-      fontSize: 18,
-      color: colorTheme.importTodo.color,
-      marginBottom: 8,
-    },
-
-    settings__importInput: {
-      height: 50,
-      color: colorTheme.importTodo.color,
-      paddingHorizontal: 8,
-      flex: 1,
-    },
-
-    settings__importBtn: {
-      width: 50,
       justifyContent: "center",
       alignItems: "center",
+      width: 60,
+      height: 60,
+      borderRadius: 30,
     },
 
     settings__center: {
