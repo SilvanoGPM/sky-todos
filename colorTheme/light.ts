@@ -70,4 +70,8 @@ export default {
   themeSelect: {
     color: "#2d3436",
   },
+
+  importTodo: {
+    color: "#2d3436",
+  },
 };

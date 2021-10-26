@@ -63,6 +63,36 @@ export function getStyles(theme: ThemesEnum) {
       fontSize: 30,
     },
 
+    settings__import: {
+      marginTop: 8,
+    },
+
+    settings__importContainer: {
+      borderWidth: 1,
+      borderColor: colorTheme.importTodo.color,
+      color: colorTheme.importTodo.color,
+      flexDirection: "row",
+    },
+
+    settings__importText: {
+      fontSize: 18,
+      color: colorTheme.importTodo.color,
+      marginBottom: 8,
+    },
+
+    settings__importInput: {
+      height: 50,
+      color: colorTheme.importTodo.color,
+      paddingHorizontal: 8,
+      flex: 1,
+    },
+
+    settings__importBtn: {
+      width: 50,
+      justifyContent: "center",
+      alignItems: "center",
+    },
+
     settings__center: {
       paddingTop: 16,
       borderTopWidth: 1,

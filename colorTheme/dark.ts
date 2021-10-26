@@ -71,4 +71,8 @@ export default {
   themeSelect: {
     color: "#ffffff",
   },
+
+  importTodo: {
+    color: "#ffffff",
+  },
 };
