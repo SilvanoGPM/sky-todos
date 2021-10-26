@@ -77,6 +77,12 @@ export const UpdateTodo: FC<TodoListRouteStackParamList<"UpdateTodo">> = ({
         </View>
 
         <Text style={styles.modal__finished}>
+          {selectedTodo.createdDate
+            ? `TODO Criado em: \n${formatDisplayDate(selectedTodo.createdDate)}`
+            : "TODO foi criado em uma versão antiga do app!"}
+        </Text>
+
+        <Text style={styles.modal__finished}>
           {selectedTodo.finished && selectedTodo.finishedDate
             ? `TODO Finalizado em: \n${formatDisplayDate(selectedTodo.finishedDate)}`
             : "TODO não foi finalizado!"}

@@ -26,9 +26,10 @@ export const NewTodo: FC<NewTodoProps> = ({ theme, setTodos }) => {
     const validTodo = validateTodoTitle(todoTitle);
 
     if (validTodo) {
-      const newTodo = {
+      const newTodo: TodoType = {
         id: uuid(),
         title: validTodo,
+        createdDate: Date.now(),
         finished: false,
       };
 
